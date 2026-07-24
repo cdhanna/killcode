@@ -1,0 +1,6 @@
+_loadAssets:
+
+load sfx clip 1, "assets/songs/demo_1"
+
+
+RETURN

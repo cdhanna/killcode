@@ -1,0 +1,218 @@
+_setupAnimatics:
+
+  ` setup the main backdrop
+  animBackdropSprite = reserve sprite id(animBackdropSprite)
+  sprite animBackdropSprite, 0, 0, 0
+  color Sprite animBackdropSprite, rgb(0,0,0)
+  size sprite animBackdropSprite, render width(), render height()
+  set sprite offset animBackdropSprite, 0, 0
+  order sprite animBackdropSprite, ORDER_ANIM
+  ` hide sprite animBackdropSprite
+  set sprite alpha animBackDropSprite, 0
+
+  animBackdropTween = reserve tween id(animBackdropTween)
+
+
+
+  remstart
+    An animatic is made up of several little animations. 
+    To control this, we'll have a big array of anim objects
+    and they get setup programmatically.
+
+    Then we run through the anim array until all of them are complete. 
+    At that point, the animatic is complete. 
+
+
+  remend
+
+  global MAX_ANIM_COUNT = 200
+  DIM anims(MAX_ANIM_COUNT) as anim
+  anim as anim
+  animCount = 0
+
+
+  dim animSpriteIds(MAX_ANIM_COUNT)
+  for n = 0 to MAX_ANIM_COUNT - 1
+    reserve sprite id(animSpriteIds(n))
+  next
+
+
+RETURN
+
+_playAnimatic:
+
+  ` bring in the backdrop
+  ` show sprite animbackdropsprite
+  create basic tween animBackdropTween, 0, 255, 500, 0
+  while is tween done(animbackdroptween) = 0
+    set sprite alpha animbackdropsprite, tweenVal(animBackdropTween)
+    sync
+  endwhile
+
+  highestEndMs = 0
+
+  ` setup all the sprites
+  for n = 0 to animCount - 1
+    anim = anims(n)
+
+    sprite animSpriteIds(n), anim.pos.x, anim.pos.y, anim.textureId
+    set sprite offset animSpriteIds(n), 0, 0
+    size sprite animSpriteIds(n), anim.size.x, anim.size.y
+    order sprite animSpriteIds(n), ORDER_ANIM + 1
+    set sprite alpha animSpriteIds(n), 255
+
+    if anim.endTimeMs > highestEndMs
+      highestEndMs = anim.endTimeMs
+    endif
+  next
+
+  ` correct any animations
+  for n = 0 to animCount - 1
+    anim = anims(n)
+    if anim.endTimeMs <= 0
+      anim.endTimeMs = highestEndMs
+    endif
+    if anim.fadeOutTimems <= 0
+      anim.fadeOutTimeMs = 200
+    endif
+    if anim.fadeInTimeMs <= 0
+      anim.fadeInTimeMs = 200
+    endif
+    anims(n) = anim
+  next
+
+
+  animStartMs = timer()
+
+  do
+    time = timer() - animStartMs
+
+    anyLeft = 0
+
+    for n = 0 to animCount - 1
+      anim = anims(n)
+
+      ` how many ms away from the start are we? 
+      `  negative numbers are leading up to the start time, 
+      `  positive numbers are into the animation. 
+      animTime = time - anim.startTimeMs
+
+      fadeInTime = -anim.fadeInTimeMs
+      fadeInRatio# = 1 - max(0, min(1, (fadeInTime - animTime) / (anim.fadeInTimeMs+1) ))`(-500 - -300)/-500 = -200 /-500 = -.2
+
+      fadeOutTime = (anim.endTimeMs-anim.startTimeMs) - anim.fadeOutTimeMs
+      fadeOutRatio# = max(0, min(1, (fadeOutTime - animTime) / (anim.fadeOutTimeMs + 1)))
+      
+      if animTime < 0
+        set sprite alpha animSpriteIds(n), fadeInRatio# * 255
+      else
+        set sprite alpha animSpriteIds(n), fadeOutRatio# * 255
+      endif
+      
+      if time < anim.endTimeMs
+        anyLeft = 1
+      endif
+
+
+    next
+
+    if not anyLeft
+      exit
+    endif
+    sync
+  loop
+
+
+  create basic tween animBackdropTween, 255, 0, 500, 0
+  while is tween done(animbackdroptween) = 0
+    set sprite alpha animbackdropsprite, tweenVal(animBackdropTween)
+    sync
+  endwhile
+
+RETURN
+
+type anim
+
+  `[AUTO] System will assign this.
+  spriteId
+  fadeTweenId
+
+
+  `[REQUIRED] the sprite's texture
+  textureId
+
+  `[REQUIRED] at what point does this animation enter
+  startTimeMs as float
+
+  `[REQUIRED] at what point does this animation exit
+  endTimeMs as float
+
+  pos as iVec
+  size as iVec
+
+  `[OPTIONAL] 
+  fadeInTimeMs as float
+
+  `[OPTIONAL] 
+  fadeOutTimeMs as float
+endtype
+
+function addAnim(textureId, duration, pos as iVec, size as iVec)
+
+endfunction
+
+` setup a test animation
+_animTest:
+
+  anims(0) = {
+    textureId = happyDanceTextures(0),
+    startTimeMs = 1000
+    pos = {
+      x = 100,
+      y = 100
+    },
+    size = {
+      x = 200
+      y = 300
+    }
+  }
+
+  anims(1) = {
+    textureId = happyDanceTextures(2),
+    startTimeMs = 3000
+    endTimeMs = 4000
+    pos = {
+      x = 400,
+      y = 100
+    },
+    size = {
+      x = 200
+      y = 300
+    }
+  }
+
+  animCount = 2
+
+RETURN
+
+
+` setup a test animation
+_animTest2:
+
+  anims(0) = {
+    textureId = happyDanceTextures(0),
+    startTimeMs = 500
+    endTimeMs = 2000
+    pos = {
+      x = 100,
+      y = 400
+    },
+    size = {
+      x = 200
+      y = 300
+    }
+  }
+
+  animCount = 1
+
+RETURN

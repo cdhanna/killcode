@@ -4,7 +4,11 @@
   "type": "monogame",
   "commandDlls": [],
   "sources": [
+    "code/entry.fbasic",
     "code/snippets.fbasic",
-    "code/main.fbasic"
+    "code/assets.fbasic",
+    "code/setups.fbasic",
+    "code/main.fbasic",
+    "code/animatics.fbasic"
   ]
 }

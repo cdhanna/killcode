@@ -1,150 +1,42 @@
-set render size 1280, 720
-set background color rgb(56, 71, 107)
+
+_main:
+
 
 ` setup music
-load sfx clip 1, "tasteOfFlesh"
 sfx 1, 1
-bpm = 125
-bps as float = 60.0 / (bpm + 0.0)
 
-dim laneKeys$(4)
-laneKeys$(0) = "F"
-laneKeys$(1) = "G"
-laneKeys$(2) = "H"
-laneKeys$(3) = "J"
-print "loaded keys"
+GOSUB _setupSnippets
+GOSUB _setupLanes
+GOSUB _setupLines
+GOSUB _setupSnips
+GOSUB _setupMan
+GOSUB _setupScoreTexts
+GOSUB _setupCode
 
-` load font
-font 1, "assets/fonts/pressStart"
+hide text loadingText
+sync
 
-` setup the lanes
-dim lanes(4) as lane
-lane as lane
-for n = 0 to len(lanes) - 1
-  lanes(n) = {
-    keyCode = scanCode(laneKeys$(n))
-    textId = reserve text id(lanes(n).textId)
-    leftSpriteId = reserve sprite id(leftSpriteId)
-    rightSpriteId = reserve sprite id(rightSpriteId)
-  }
+GOSUB _setupAnimatics
 
-  x = getLaneX(n)
-  text lanes(n).textId, x, render height()-40, 1, laneKeys$(n)
-  enable text drop shadow lanes(n).textId, -4, -8, rgb(0,0,0)
-  size text x lanes(n).textId, 50
-
-  sprite lanes(n).leftSpriteId, x-140, 10 + render height()/2, 0
-  size sprite lanes(n).leftSpriteId, 5, render height()-200
-
-  sprite lanes(n).rightSpriteId, x+140, 10 + render height()/2, 0
-  size sprite lanes(n).rightSpriteId, 5, render height()-200
-
-next
-function getLaneX(index)
-endfunction 200 + index * 300
-
-` create the target goal posts
-targetY = render height() - 135
-targetHeight = 100
-free sprite id(sid)
-sprite sid, render width()/2, targetY - targetHeight/2, 0
-size sprite sid, render width(), 4
-
-free sprite id(sid)
-sprite sid, render width()/2, targetY + targetHeight/2, 0
-size sprite sid, render width(), 4
-
-` create top bar
-free sprite id(sid)
-sprite sid, render width()/2, 100, 0
-size sprite sid, render width(), 4
+GOSUB _animtest
+GOSUB _playAnimatic
 
 
-print "loaded lanes"
-
-` create the snips
-dim snips(32) as snip
-snip as snip
-`y = -500
-songTimeCounter = 3 / bps
-noteDelta = 150
-for n = 0 to len(snips) - 1
-  snips(n) = {
-    textId = reserve sprite id(snips(n).textId)
-    laneIndex = (n+rnd(2)) mod len(lanes),
-    index = rnd(len(snippets$))
-    `y = y,
-    songTime# = (songTimeCounter * bps * 1) * 1000 `arbitrary easy factor
-  }
-  songTimeCounter += 1 + rnd(3)
-  print snips(n).songTime#
-  `y -= 2*noteDelta + rnd(4)*noteDelta
+GOSUB _animtest2
+GOSUB _playAnimatic
 
 
-  text snips(n).textId, getLaneX(snips(n).laneIndex), snips(n).y, 1, snippets$(snips(n).index)
-  size text y snips(n).textId, 50
-next
-print "loaded snips"
-
-` dancing man
-danceManSprite = reserve sprite id(danceManSprite)
-sprite danceManSprite, render width()/2, render height()/2, happyDanceTextures(rnd(len(happyDanceTextures)))
-size sprite x danceManSprite, render width() / 3
-order sprite danceManSprite, -1
-
-` create the score text
-scoreLabelTextId = reserve text id(scoreLabelTextId)
-text scoreLabelTextId, 10, 10, 1, "SCORE"
-set text offset scoreLabelTextId, 0, 0
-size text y scoreLabelTextId, 30
-
-scoreTextId = reserve text id(scoreTextId)
-text scoreTextId, 10, 40, 1, "0"
-set text offset scoreTextId, 0, 0
-size text y scoreTextId, 50
-
-` set up the secret code
-dim secretCode(32) as codePart
-secretCodeSize = 12
-pendingCodeIndex = 0
-textX = 400
-textY = 15
-for n = 0 to secretCodeSize - 1
-  secretCode(n) = {
-    index = snips(n*2).index,
-    textId = reserve text id(secretCode(n).textId)
-  }
-  if n > 0
-    textX += get text size x(secretCode(n-1).textId) + 12
-  endif
-  text secretCode(n).textId, textX, textY, 1, snippets$(secretCode(n).index)
-  size text y secretCode(n).textId, 25
-  ` enable text gizmo secretCode(n).textId
-  set text offset secretCode(n).textId, 0, 0
-  enable text drop shadow secretCode(n).textId, -4, -4, rgb(0,0,0)
-  if textX + get text size x(secretCode(n).textId) > render width() - 10
-    textX = 400
-    textY += 35
-    set text position secretCode(n).textId, textX, textY
-  endif
-  sync
-next
-
-score = 0
-
-
-play sfx 1
+`play sfx 1
 songStartTime = timer()
+fallSpeed# = (noteDelta / bps) / 1000
 
 do
   time = timer()
   songTime = time - songStartTime
-  ` print songTime
-
+  
   `312.5px/second for quarter note at 125bpm 
   ` speed = distance / time
   ` speed = 150px / .48 (.48 is 60/125 bpm)
-  fallSpeed# = (noteDelta / bps) / 1000
   ` print fallSpeed#
   `update the snippets falling down
   ` y += fallSpeed
@@ -230,6 +122,7 @@ do
         set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))
 
       endif
+      set sprite flip dancemansprite, rnd(1), 0
 
 
       color text snip.textId, rgb(targetRatio# * 255, (1 - targetRatio#) * 255, 0)
@@ -242,6 +135,10 @@ do
 
   sync
 loop
+
+type iVec
+  x,y
+endtype
 
 type lane
   keyCode
@@ -259,3 +156,7 @@ type snip
   textId,
   songTime#
 endtype
+
+
+function getLaneX(index)
+endfunction 200 + index * 300
