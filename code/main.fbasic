@@ -22,10 +22,6 @@ GOSUB _animtest
 GOSUB _playAnimatic
 
 
-GOSUB _animtest2
-GOSUB _playAnimatic
-
-
 `play sfx 1
 songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000

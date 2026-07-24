@@ -160,6 +160,20 @@
       "height": 128,
       "blobPath": ".fade-cache/blobs/e96e10be6a50794ac2f4a72a567ad68a81c85fa33be7987c301fa78becc033f4.auto.v33.xnb",
       "compiledAt": "2026-07-23T22:10:43.331Z"
+    },
+    {
+      "assetName": "mask",
+      "sourcePath": "mask.fx",
+      "sourceHash": "0adf24d4117f40aee1d90386dc9eb17d04b19e965922f6c858b4d2861f4a62cc",
+      "format": "shader-mgfx-v10",
+      "encoderVersion": 33,
+      "width": 0,
+      "height": 0,
+      "blobPath": ".fade-cache/blobs/0adf24d4117f40aee1d90386dc9eb17d04b19e965922f6c858b4d2861f4a62cc.shader-mgfx-v10.v33.xnb",
+      "metadata": {
+        "techniqueCount": 1
+      },
+      "compiledAt": "2026-07-24T18:52:03.018Z"
     }
   ]
 }
