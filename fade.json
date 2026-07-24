@@ -1,0 +1,10 @@
+{
+  "$schema": "/fade.schema.json",
+  "name": "killcode",
+  "type": "monogame",
+  "commandDlls": [],
+  "sources": [
+    "code/snippets.fbasic",
+    "code/main.fbasic"
+  ]
+}

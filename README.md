@@ -1,2 +1,0 @@
-# killcode
-Fade playground project

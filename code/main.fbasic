@@ -1,0 +1,256 @@
+set render size 1280, 720
+set background color rgb(56, 71, 107)
+
+` setup music
+load sfx clip 1, "tasteOfFlesh"
+sfx 1, 1
+bpm = 125
+bps as float = 60.0 / (bpm + 0.0)
+
+dim laneKeys$(4)
+laneKeys$(0) = "A"
+laneKeys$(1) = "F"
+laneKeys$(2) = "J"
+laneKeys$(3) = ";"
+print "loaded keys"
+
+` load font
+font 1, "assets/fonts/pressStart"
+
+` setup the lanes
+dim lanes(4) as lane
+lane as lane
+for n = 0 to len(lanes) - 1
+  lanes(n) = {
+    keyCode = scanCode(laneKeys$(n))
+    textId = reserve text id(lanes(n).textId)
+    leftSpriteId = reserve sprite id(leftSpriteId)
+    rightSpriteId = reserve sprite id(rightSpriteId)
+  }
+
+  x = getLaneX(n)
+  text lanes(n).textId, x, render height()-40, 1, laneKeys$(n)
+  enable text drop shadow lanes(n).textId, -4, -8, rgb(0,0,0)
+  size text x lanes(n).textId, 50
+
+  sprite lanes(n).leftSpriteId, x-140, 10 + render height()/2, 0
+  size sprite lanes(n).leftSpriteId, 5, render height()-200
+
+  sprite lanes(n).rightSpriteId, x+140, 10 + render height()/2, 0
+  size sprite lanes(n).rightSpriteId, 5, render height()-200
+
+next
+function getLaneX(index)
+endfunction 200 + index * 300
+
+` create the target goal posts
+targetY = render height() - 135
+targetHeight = 100
+free sprite id(sid)
+sprite sid, render width()/2, targetY - targetHeight/2, 0
+size sprite sid, render width(), 4
+
+free sprite id(sid)
+sprite sid, render width()/2, targetY + targetHeight/2, 0
+size sprite sid, render width(), 4
+
+` create top bar
+free sprite id(sid)
+sprite sid, render width()/2, 100, 0
+size sprite sid, render width(), 4
+
+
+print "loaded lanes"
+
+` create the snips
+dim snips(32) as snip
+snip as snip
+`y = -500
+songTimeCounter = 0
+noteDelta = 150
+for n = 0 to len(snips) - 1
+  snips(n) = {
+    textId = reserve sprite id(snips(n).textId)
+    laneIndex = (n+rnd(2)) mod len(lanes),
+    index = rnd(len(snippets$))
+    `y = y,
+    songTime# = (songTimeCounter * bps * 1) * 1000 `arbitrary easy factor
+  }
+  songTimeCounter += 2 + rnd(2)
+  print snips(n).songTime#
+  `y -= 2*noteDelta + rnd(4)*noteDelta
+
+
+  text snips(n).textId, getLaneX(snips(n).laneIndex), snips(n).y, 1, snippets$(snips(n).index)
+  size text y snips(n).textId, 50
+next
+print "loaded snips"
+
+` dancing man
+danceManSprite = reserve sprite id(danceManSprite)
+sprite danceManSprite, render width()/2, render height()/2, happyDanceTextures(rnd(len(happyDanceTextures)))
+size sprite x danceManSprite, render width() / 3
+order sprite danceManSprite, -1
+
+` create the score text
+scoreLabelTextId = reserve text id(scoreLabelTextId)
+text scoreLabelTextId, 10, 10, 1, "SCORE"
+set text offset scoreLabelTextId, 0, 0
+size text y scoreLabelTextId, 30
+
+scoreTextId = reserve text id(scoreTextId)
+text scoreTextId, 10, 40, 1, "0"
+set text offset scoreTextId, 0, 0
+size text y scoreTextId, 50
+
+` set up the secret code
+dim secretCode(32) as codePart
+secretCodeSize = 12
+pendingCodeIndex = 0
+textX = 400
+textY = 15
+for n = 0 to secretCodeSize - 1
+  secretCode(n) = {
+    index = snips(n*2).index,
+    textId = reserve text id(secretCode(n).textId)
+  }
+  if n > 0
+    textX += get text size x(secretCode(n-1).textId) + 12
+  endif
+  text secretCode(n).textId, textX, textY, 1, snippets$(secretCode(n).index)
+  size text y secretCode(n).textId, 25
+  ` enable text gizmo secretCode(n).textId
+  set text offset secretCode(n).textId, 0, 0
+  enable text drop shadow secretCode(n).textId, -4, -4, rgb(0,0,0)
+  if textX + get text size x(secretCode(n).textId) > render width() - 10
+    textX = 400
+    textY += 35
+    set text position secretCode(n).textId, textX, textY
+  endif
+  sync
+next
+
+score = 0
+
+
+play sfx 1
+songStartTime = timer()
+
+do
+  time = timer()
+  songTime = time - songStartTime
+  ` print songTime
+
+  `312.5px/second for quarter note at 125bpm 
+  ` speed = distance / time
+  ` speed = 150px / .48 (.48 is 60/125 bpm)
+  fallSpeed# = (noteDelta / bps) / 1000
+  ` print fallSpeed#
+  `update the snippets falling down
+  ` y += fallSpeed
+  for n = 0 to len(snips) - 1
+    snip = snips(n)
+    
+    snip.y = targetY - (snip.songtime#-songTime)*fallSpeed#
+
+    set text position snip.textId, text x(snip.textId), snip.y
+
+    if snip.y > render height() + 30
+      ` y -= 500 + rnd(4)*150
+      `snip.y = y
+      snip.index = rnd(len(snippets$))
+      set text snip.textId, snippets$(snip.index)
+      color text snip.textId, rgb(255, 255, 255)
+    endif
+    
+
+    snips(n) = snip
+
+  next n
+
+  ` check for keystroke
+  for n = 0 to len(lanes) - 1
+    lane = lanes(n)
+    if new key down(lane.keyCode)
+      print "hit lane " + str$(n)
+
+      ` find the lowest snip in the current lane
+      highestY = 0 `TODO: make 0, so only on screen things get caught
+      bestSnipIndex = -1
+      for l = 0 to len(snips) - 1
+        snip = snips(l)
+        if snip.laneIndex <> n then skip
+        if snip.y > highestY
+          highestY = snip.y
+          bestSnipIndex = l
+        endif
+      next
+      if bestSnipIndex < 0
+        assert 0, "ultimate failure!"
+      endif
+
+      ` found snip, how close is it to the banner?
+      snip = snips(bestSnipIndex)
+      targetDist = abs(targetY - snip.y)
+      targetRatio# = min(1, max(0, (targetDist + 0.0) / targetHeight))
+      
+      
+      ` is this a special code? 
+      if spaceKey()
+        if pendingCodeIndex < secretCodeSize
+          if secretCode(pendingCodeIndex).index = snip.index
+            if targetRatio# < .5
+              color text secretCode(pendingCodeIndex).textId, rgb(255, 128, 0)
+              pendingCodeIndex += 1
+              targetRatio# -= 1 `bonus points!
+            endif
+          else
+            ` oh no, bad flunk!
+            targetRatio# = 1
+          endif
+        endif
+      endif
+
+      
+      
+      print "SCORE: " + str$((1 - targetRatio#) * 100)
+      scoreAmount = ((1 - targetRatio#) * 10)
+      scoreAmount *= 10
+      score += scoreAmount
+      set text scoreTextId, str$(score)
+      if (targetRatio# < .5)
+        ` hit!
+        set sprite texture dancemansprite, happyDanceTextures(rnd(len(happyDanceTextures)))
+        else
+        set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))
+
+      endif
+
+
+      color text snip.textId, rgb(targetRatio# * 255, (1 - targetRatio#) * 255, 0)
+      
+
+
+
+    endif
+  next
+
+  sync
+loop
+
+type lane
+  keyCode
+  textId
+  leftSpriteId, rightSpriteId
+endtype
+
+type codePart
+  index,
+  textId
+endtype
+
+type snip
+  index, laneIndex, y
+  textId,
+  songTime#
+endtype
