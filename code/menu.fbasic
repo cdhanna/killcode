@@ -1,0 +1,93 @@
+_mainMenu:
+
+  set sprite alpha animbackdropsprite, 255
+  show sprite animbackdropsprite
+
+
+  menuRenderTarget = 20
+  render target menuRenderTarget
+
+  upperTitleText = reserve text id(upperTitleText)
+  text upperTitleText, render width()/2, 100, 1, "the COUNTDOWN to"
+  order text upperTitleText, ORDER_MENU
+  size text y uppertitletext, 30
+  enable text drop shadow uppertitletext, 0, 2, rgb(70, 138, 255)
+  set text render target upperTitleText, menuRenderTarget
+
+  mainTitleText = reserve text id(mainTitleText)
+  text mainTitleText, render width()/2, 180, 1, "FREEDOM"
+  order text mainTitleText, ORDER_MENU
+  size text x mainTitleText, render width()/2
+  enable text drop shadow mainTitleText, -4, -4, rgb(70, 119, 255)
+  
+  helperText = reserve text id(helperText)
+  text helperText, render width()/2, render height()-50, 1, "Arrow keys / Enter"
+  order text helperText, ORDER_MENU
+  size text y helperText, 30
+  enable text drop shadow helperText, -2, -2, rgb(70, 119, 255)
+  
+  
+  buttonStartY = 300
+  selectedButtonIndex = 0
+  buttonHeight = 100
+
+  dim menuButtons(2) as menuButton
+  menuButton as menuButton
+  for n = 0 to len(menuButtons) - 1
+    tid = reserve text id(menuButtons(n).textId)
+    
+    text tid, -100 + render width()/2,buttonStartY + n*buttonHeight, 1, "play"
+    enable text drop shadow tid, -4, -4, rgb(70, 119, 255)
+    set text offset tid, 0, .5
+    if n = 1
+      set text tid, "about"
+    endif
+
+    size text y tid, 80
+    order text tid, ORDER_MENU
+  next
+
+  selectionSprite = reserve sprite id(selectionSprite)
+  sprite selectionSprite, render width()/2 - 150, buttonStartY, 0
+  size sprite selectionSprite, 50, 50
+  order sprite selectionSprite, ORDER_MENU
+  set sprite render target selectionSprite, menuRenderTarget
+
+  buttonMoveTween = reserve tween id(buttonMoveTween)
+  GOSUB _menubuttontweensetup
+
+  t# = timer()
+  angle# = 0
+  do
+    dt# = timer() - t#
+    t# = timer()
+
+    if new upkey()
+      selectedButtonIndex -= 1
+      if selectedButtonIndex < 0 then selectedButtonIndex = len(menuButtons) - 1
+    
+      GOSUB _menubuttontweensetup
+
+    endif
+    if new downkey()
+      selectedButtonIndex += 1
+      if selectedButtonIndex > len(menuButtons)-1 then selectedButtonIndex = 0
+      
+      GOSUB _menubuttontweensetup
+    endif
+
+    position sprite selectionSprite, render width()/2 - 150, tweenVal(buttonMoveTween)
+
+    if new rightkey() or new spaceKey()
+      RETURN
+    endif
+
+
+    sync
+  loop
+
+RETURN
+
+_menuButtonTweenSetup:
+  create basic tween buttonMoveTween, sprite y(selectionSprite), buttonStartY + selectedButtonIndex * buttonHeight, 250, 0
+RETURN

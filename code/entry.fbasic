@@ -29,6 +29,7 @@ targetHeight = 100
 score = 0
 
 ORDER_ANIM = 100
+ORDER_MENU = 200
 
 
 goto _main

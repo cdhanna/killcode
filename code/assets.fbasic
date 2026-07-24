@@ -1,6 +1,12 @@
 _loadAssets:
 
-load sfx clip 1, "assets/songs/demo_1"
+    load sfx clip 1, "assets/songs/demo_1"
+
+    TEX_NIGHTSCAPE = reserve texture id(TEX_NIGHTSCAPE)
+    texture TEX_NIGHTSCAPE, "assets/animatics/Nightscape"
+
+    TEX_HOODED_MAN = reserve texture id(TEX_HOODED_MAN)
+    texture TEX_HOODED_MAN, "assets/animatics/Hooded_man"
 
 
 RETURN

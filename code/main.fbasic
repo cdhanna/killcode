@@ -14,11 +14,12 @@ GOSUB _setupScoreTexts
 GOSUB _setupCode
 
 hide text loadingText
-sync
 
 GOSUB _setupAnimatics
+` GOSUB _mainMenu
 
-GOSUB _animtest
+
+GOSUB _animIntro
 GOSUB _playAnimatic
 
 
@@ -131,6 +132,11 @@ do
 
   sync
 loop
+
+
+type menuButton
+  textId
+endtype
 
 type iVec
   x,y

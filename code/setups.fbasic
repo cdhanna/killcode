@@ -131,7 +131,7 @@ _setupCode:
       textY += 35
       set text position secretCode(n).textId, textX, textY
     endif
-    sync
+    ` sync
   next
 
 RETURN

@@ -9,6 +9,7 @@
     "code/assets.fbasic",
     "code/setups.fbasic",
     "code/main.fbasic",
-    "code/animatics.fbasic"
+    "code/animatics.fbasic",
+    "code/menu.fbasic"
   ]
 }

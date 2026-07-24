@@ -174,6 +174,28 @@
         "techniqueCount": 1
       },
       "compiledAt": "2026-07-24T18:52:03.018Z"
+    },
+    {
+      "assetName": "assets/animatics/Hooded_man",
+      "sourcePath": "assets/animatics/Hooded_man.png",
+      "sourceHash": "bc420e0729f7d3cd4f6bfbf35584dd516fb0af3b19931d274dc2b7a4d698860a",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 128,
+      "height": 256,
+      "blobPath": ".fade-cache/blobs/bc420e0729f7d3cd4f6bfbf35584dd516fb0af3b19931d274dc2b7a4d698860a.auto.v33.xnb",
+      "compiledAt": "2026-07-24T20:37:53.536Z"
+    },
+    {
+      "assetName": "assets/animatics/Nightscape",
+      "sourcePath": "assets/animatics/Nightscape.png",
+      "sourceHash": "0a6df21c6aba2beb257a04c4b3d99fcfabbb22852eb5e16af9eebf807183bbc1",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 486,
+      "height": 343,
+      "blobPath": ".fade-cache/blobs/0a6df21c6aba2beb257a04c4b3d99fcfabbb22852eb5e16af9eebf807183bbc1.auto.v33.xnb",
+      "compiledAt": "2026-07-24T20:37:53.556Z"
     }
   ]
 }
