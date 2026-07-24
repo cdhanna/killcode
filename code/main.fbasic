@@ -8,10 +8,10 @@ bpm = 125
 bps as float = 60.0 / (bpm + 0.0)
 
 dim laneKeys$(4)
-laneKeys$(0) = "A"
-laneKeys$(1) = "F"
-laneKeys$(2) = "J"
-laneKeys$(3) = ";"
+laneKeys$(0) = "F"
+laneKeys$(1) = "G"
+laneKeys$(2) = "H"
+laneKeys$(3) = "J"
 print "loaded keys"
 
 ` load font
@@ -66,7 +66,7 @@ print "loaded lanes"
 dim snips(32) as snip
 snip as snip
 `y = -500
-songTimeCounter = 0
+songTimeCounter = 3 / bps
 noteDelta = 150
 for n = 0 to len(snips) - 1
   snips(n) = {
@@ -76,7 +76,7 @@ for n = 0 to len(snips) - 1
     `y = y,
     songTime# = (songTimeCounter * bps * 1) * 1000 `arbitrary easy factor
   }
-  songTimeCounter += 2 + rnd(2)
+  songTimeCounter += 1 + rnd(3)
   print snips(n).songTime#
   `y -= 2*noteDelta + rnd(4)*noteDelta
 
@@ -158,6 +158,9 @@ do
     if snip.y > render height() + 30
       ` y -= 500 + rnd(4)*150
       `snip.y = y
+      songTimeCounter += 1 + rnd(2)
+      snip.songTime# = (songTimeCounter * bps * 1) * 1000 
+
       snip.index = rnd(len(snippets$))
       set text snip.textId, snippets$(snip.index)
       color text snip.textId, rgb(255, 255, 255)
@@ -168,6 +171,7 @@ do
 
   next n
 
+
   ` check for keystroke
   for n = 0 to len(lanes) - 1
     lane = lanes(n)
@@ -175,7 +179,7 @@ do
       print "hit lane " + str$(n)
 
       ` find the lowest snip in the current lane
-      highestY = 0 `TODO: make 0, so only on screen things get caught
+      highestY = targetY - (5*60*1000-songTime)*fallSpeed# `TODO: make 0, so only on screen things get caught
       bestSnipIndex = -1
       for l = 0 to len(snips) - 1
         snip = snips(l)
@@ -189,6 +193,7 @@ do
         assert 0, "ultimate failure!"
       endif
 
+      print "found snip " + str$(bestSnipIndex)
       ` found snip, how close is it to the banner?
       snip = snips(bestSnipIndex)
       targetDist = abs(targetY - snip.y)
@@ -196,7 +201,7 @@ do
       
       
       ` is this a special code? 
-      if spaceKey()
+      if left shiftKey()
         if pendingCodeIndex < secretCodeSize
           if secretCode(pendingCodeIndex).index = snip.index
             if targetRatio# < .5
