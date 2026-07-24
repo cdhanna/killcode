@@ -1,11 +1,29 @@
-_mainMenu:
 
+_setupMenu:
   set sprite alpha animbackdropsprite, 255
   show sprite animbackdropsprite
 
 
-  menuRenderTarget = 20
+  menuRenderTarget = reserve render target id(menuRenderTarget)
   render target menuRenderTarget
+  set render target clear flags menurendertarget, 1
+  set render target background color menurendertarget, rgb(255, 0, 0, 0)
+
+  menuSprite = reserve sprite id(menuSprite)
+  sprite menuSprite, 0, 0, render target texture(menuRenderTarget)
+  order sprite menuSprite,ORDER_MENU + 1
+  set sprite offset menuSprite, 0, 0
+  set sprite alpha menuSprite, 0
+  menuFadeTween = reserve tween id(menuFadeTween)
+  
+  menuBackground = reserve sprite id(menuBackground)
+  sprite menubackground, 0, 0, 0
+  set sprite offset menuBackground, 0, 0
+  size sprite menuBackground, render width(), render height()
+  order sprite menubackground, ORDER_MENU - 1
+  color sprite menuBackground, backgroundColor
+  set sprite render target menuBackground, menuRenderTarget
+
 
   upperTitleText = reserve text id(upperTitleText)
   text upperTitleText, render width()/2, 100, 1, "the COUNTDOWN to"
@@ -19,12 +37,15 @@ _mainMenu:
   order text mainTitleText, ORDER_MENU
   size text x mainTitleText, render width()/2
   enable text drop shadow mainTitleText, -4, -4, rgb(70, 119, 255)
+  set text render target mainTitleText, menuRenderTarget
   
+
   helperText = reserve text id(helperText)
-  text helperText, render width()/2, render height()-50, 1, "Arrow keys / Enter"
+  text helperText, render width()/2, render height()-50, 1, "Arrow keys / LShift"
   order text helperText, ORDER_MENU
   size text y helperText, 30
   enable text drop shadow helperText, -2, -2, rgb(70, 119, 255)
+  set text render target helperText, menuRenderTarget
   
   
   buttonStartY = 300
@@ -37,6 +58,7 @@ _mainMenu:
     tid = reserve text id(menuButtons(n).textId)
     
     text tid, -100 + render width()/2,buttonStartY + n*buttonHeight, 1, "play"
+    set text render target tid, menuRenderTarget
     enable text drop shadow tid, -4, -4, rgb(70, 119, 255)
     set text offset tid, 0, .5
     if n = 1
@@ -54,10 +76,22 @@ _mainMenu:
   set sprite render target selectionSprite, menuRenderTarget
 
   buttonMoveTween = reserve tween id(buttonMoveTween)
+  RETURN
+
+_mainMenu:
   GOSUB _menubuttontweensetup
+
 
   t# = timer()
   angle# = 0
+
+
+  create basic tween menuFadeTween, 0, 1, 250, 0
+  while is tween done(menuFadeTween) = 0
+    set sprite alpha menuSprite, tweenVal(menuFadeTween) * 255
+    sync
+  endwhile
+
   do
     dt# = timer() - t#
     t# = timer()
@@ -78,8 +112,16 @@ _mainMenu:
 
     position sprite selectionSprite, render width()/2 - 150, tweenVal(buttonMoveTween)
 
-    if new rightkey() or new spaceKey()
-      RETURN
+    if new rightkey() or new left shiftKey()
+      `RETURN
+
+
+      create basic tween menuFadeTween, 1, 0, 250, 0
+      while is tween done(menuFadeTween) = 0
+        set sprite alpha menuSprite, tweenVal(menuFadeTween) * 255
+        sync
+      endwhile
+      GOTO _gamePlay
     endif
 
 

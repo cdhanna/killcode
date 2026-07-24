@@ -2,7 +2,7 @@
 ` :::: set up basic screen dimensions and such
 set render size 1280, 720
 set background color rgb(56, 71, 107)
-
+backgroundColor = rgb(52, 45, 45)
 
 font 1, "assets/fonts/pressStart"
 

@@ -162,20 +162,6 @@
       "compiledAt": "2026-07-23T22:10:43.331Z"
     },
     {
-      "assetName": "mask",
-      "sourcePath": "mask.fx",
-      "sourceHash": "0adf24d4117f40aee1d90386dc9eb17d04b19e965922f6c858b4d2861f4a62cc",
-      "format": "shader-mgfx-v10",
-      "encoderVersion": 33,
-      "width": 0,
-      "height": 0,
-      "blobPath": ".fade-cache/blobs/0adf24d4117f40aee1d90386dc9eb17d04b19e965922f6c858b4d2861f4a62cc.shader-mgfx-v10.v33.xnb",
-      "metadata": {
-        "techniqueCount": 1
-      },
-      "compiledAt": "2026-07-24T18:52:03.018Z"
-    },
-    {
       "assetName": "assets/animatics/Hooded_man",
       "sourcePath": "assets/animatics/Hooded_man.png",
       "sourceHash": "bc420e0729f7d3cd4f6bfbf35584dd516fb0af3b19931d274dc2b7a4d698860a",
@@ -196,6 +182,75 @@
       "height": 343,
       "blobPath": ".fade-cache/blobs/0a6df21c6aba2beb257a04c4b3d99fcfabbb22852eb5e16af9eebf807183bbc1.auto.v33.xnb",
       "compiledAt": "2026-07-24T20:37:53.556Z"
+    },
+    {
+      "assetName": "assets/animatics/Monster_2",
+      "sourcePath": "assets/animatics/Monster_2.png",
+      "sourceHash": "d0adb7574713080e7f7088907d245c984b5b95d6cd3c80263c91b355d6264fb2",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 319,
+      "blobPath": ".fade-cache/blobs/d0adb7574713080e7f7088907d245c984b5b95d6cd3c80263c91b355d6264fb2.auto.v33.xnb",
+      "compiledAt": "2026-07-24T22:10:11.417Z"
+    },
+    {
+      "assetName": "assets/animatics/Monster_3",
+      "sourcePath": "assets/animatics/Monster_3.png",
+      "sourceHash": "2a993f1a4efa39b7dd73d8dfba71bf27cf8d0d73876c45819ab053c7dcfb89c4",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 322,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/2a993f1a4efa39b7dd73d8dfba71bf27cf8d0d73876c45819ab053c7dcfb89c4.auto.v33.xnb",
+      "compiledAt": "2026-07-24T22:10:11.441Z"
+    },
+    {
+      "assetName": "assets/animatics/Monster_4",
+      "sourcePath": "assets/animatics/Monster_4.png",
+      "sourceHash": "7088a6287e9b50a39769f1d389351d98027f3c81f06e276c6f594bedc9cee854",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 391,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/7088a6287e9b50a39769f1d389351d98027f3c81f06e276c6f594bedc9cee854.auto.v33.xnb",
+      "compiledAt": "2026-07-24T22:10:11.456Z"
+    },
+    {
+      "assetName": "assets/animatics/Monster_5",
+      "sourcePath": "assets/animatics/Monster_5.png",
+      "sourceHash": "688685e38f7cd9bb63310872dbbecc38f937259147a1a69946565b5e3569e798",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/688685e38f7cd9bb63310872dbbecc38f937259147a1a69946565b5e3569e798.auto.v33.xnb",
+      "compiledAt": "2026-07-24T22:10:11.470Z"
+    },
+    {
+      "assetName": "assets/animatics/monster_1",
+      "sourcePath": "assets/animatics/monster_1.png",
+      "sourceHash": "2137d9d0648c7c9b278ba2e4bc3adcda257f757e5adf41f1aa5c937b711dd95a",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 292,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/2137d9d0648c7c9b278ba2e4bc3adcda257f757e5adf41f1aa5c937b711dd95a.auto.v33.xnb",
+      "compiledAt": "2026-07-24T22:10:11.491Z"
+    },
+    {
+      "assetName": "mask",
+      "sourcePath": "mask.fx",
+      "sourceHash": "0adf24d4117f40aee1d90386dc9eb17d04b19e965922f6c858b4d2861f4a62cc",
+      "format": "shader-mgfx-v10",
+      "encoderVersion": 33,
+      "width": 0,
+      "height": 0,
+      "blobPath": ".fade-cache/blobs/0adf24d4117f40aee1d90386dc9eb17d04b19e965922f6c858b4d2861f4a62cc.shader-mgfx-v10.v33.xnb",
+      "metadata": {
+        "techniqueCount": 1
+      },
+      "compiledAt": "2026-07-24T22:40:49.113Z"
     }
   ]
 }

@@ -8,8 +8,8 @@
     "code/snippets.fbasic",
     "code/assets.fbasic",
     "code/setups.fbasic",
-    "code/main.fbasic",
     "code/animatics.fbasic",
+    "code/main.fbasic",
     "code/menu.fbasic"
   ]
 }

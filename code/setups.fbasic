@@ -1,3 +1,7 @@
+_setupCountdown:
+
+RETURN
+
 _setupLanes:
 
   dim laneKeys$(4)
@@ -7,6 +11,7 @@ _setupLanes:
   laneKeys$(3) = "J"
   print "loaded keys"
 
+  lineColor = rgb(128, 128, 128, 128)
 
   ` setup the lanes
   dim lanes(4) as lane
@@ -26,9 +31,11 @@ _setupLanes:
 
     sprite lanes(n).leftSpriteId, x-140, 10 + render height()/2, 0
     size sprite lanes(n).leftSpriteId, 5, render height()-200
+    color sprite lanes(n).leftspriteid, lineColor
 
     sprite lanes(n).rightSpriteId, x+140, 10 + render height()/2, 0
     size sprite lanes(n).rightSpriteId, 5, render height()-200
+    color sprite lanes(n).rightSpriteId, lineColor
 
   next
 
@@ -37,19 +44,20 @@ RETURN
 _setupLines:
 
   ` create the target goal posts
-
   free sprite id(sid)
   sprite sid, render width()/2, targetY - targetHeight/2, 0
   size sprite sid, render width(), 4
-
+  color sprite sid, lineColor
   free sprite id(sid)
   sprite sid, render width()/2, targetY + targetHeight/2, 0
   size sprite sid, render width(), 4
+  color sprite sid, lineColor
 
   ` create top bar
   free sprite id(sid)
   sprite sid, render width()/2, 100, 0
   size sprite sid, render width(), 4
+  color sprite sid, lineColor
 
 RETURN
 

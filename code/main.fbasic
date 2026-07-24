@@ -12,22 +12,35 @@ GOSUB _setupSnips
 GOSUB _setupMan
 GOSUB _setupScoreTexts
 GOSUB _setupCode
+GOSUB _setupcountdown
 
 hide text loadingText
 
 GOSUB _setupAnimatics
-` GOSUB _mainMenu
 
+GOSUB _setupMenu
 
-GOSUB _animIntro
-GOSUB _playAnimatic
+` GOSUB _animIntro
+` GOSUB _playAnimatic
 
+GOTO _mainMenu
 
-`play sfx 1
+_gamePlay:
+set sprite alpha animbackdropsprite, 0
+
+` do the 3/2/1 timer countdown
+
+` play sfx 1
 songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000
 
 do
+
+  if new spaceKey()
+    print "ESC!"
+    GOTO _mainmenu
+  endif
+
   time = timer()
   songTime = time - songStartTime
   

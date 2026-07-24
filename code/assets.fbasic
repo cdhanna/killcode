@@ -8,5 +8,15 @@ _loadAssets:
     TEX_HOODED_MAN = reserve texture id(TEX_HOODED_MAN)
     texture TEX_HOODED_MAN, "assets/animatics/Hooded_man"
 
+    TEX_MONSTER_1 = reserve texture id(TEX_MONSTER_1)
+    texture TEX_MONSTER_1, "assets/animatics/monster_1"
+    TEX_MONSTER_2 = reserve texture id(TEX_MONSTER_2)
+    texture TEX_MONSTER_2, "assets/animatics/Monster_2"
+    TEX_MONSTER_3 = reserve texture id(TEX_MONSTER_3)
+    texture TEX_MONSTER_3, "assets/animatics/Monster_3"
+    TEX_MONSTER_4 = reserve texture id(TEX_MONSTER_4)
+    texture TEX_MONSTER_4, "assets/animatics/Monster_4"
+    TEX_MONSTER_5 = reserve texture id(TEX_MONSTER_5)
+    texture TEX_MONSTER_5, "assets/animatics/Monster_5"
 
 RETURN
