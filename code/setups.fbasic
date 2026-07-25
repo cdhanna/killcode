@@ -88,6 +88,7 @@ _initSnips:
 
   for n = 0 to len(snips) - 1
     snips(n).songTime# = (songTimeCounter * bps * 1) * 1000
+    snips(n).dead = 0
     songTimeCounter += 1 + rnd(3)
     set text position snips(n).textId, text x(snips(n).textId), -50
 

@@ -35,7 +35,7 @@ GOSUB _doCountDown
 
 ` do the 3/2/1 timer countdown
 
-play sfx 1
+` play sfx 1
 songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000
 pauseOffset = 0
@@ -73,7 +73,7 @@ do
       `snip.y = y
       songTimeCounter += 1 + rnd(2)
       snip.songTime# = (songTimeCounter * bps * 1) * 1000 
-
+      snip.dead = 0
       snip.index = rnd(len(snippets$))
       set text snip.textId, snippets$(snip.index)
       color text snip.textId, rgb(255, 255, 255)
@@ -97,6 +97,7 @@ do
       for l = 0 to len(snips) - 1
         snip = snips(l)
         if snip.laneIndex <> n then skip
+        if snip.dead then skip
         if snip.y > highestY
           highestY = snip.y
           bestSnipIndex = l
@@ -111,7 +112,7 @@ do
       snip = snips(bestSnipIndex)
       targetDist = abs(targetY - snip.y)
       targetRatio# = min(1, max(0, (targetDist + 0.0) / targetHeight))
-      
+      snips(bestSnipIndex).dead = 1
       
       ` is this a special code? 
       if left shiftKey()
@@ -180,7 +181,8 @@ endtype
 type snip
   index, laneIndex, y
   textId,
-  songTime#
+  songTime#,
+  dead
 endtype
 
 
