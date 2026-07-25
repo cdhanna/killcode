@@ -10,6 +10,7 @@
     "code/setups.fbasic",
     "code/animatics.fbasic",
     "code/main.fbasic",
-    "code/menu.fbasic"
+    "code/menu.fbasic",
+    "code/countdown.fbasic"
   ]
 }

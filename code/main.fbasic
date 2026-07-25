@@ -20,29 +20,40 @@ GOSUB _setupAnimatics
 
 GOSUB _setupMenu
 
-` GOSUB _animIntro
-` GOSUB _playAnimatic
+GOSUB _animIntro
+GOSUB _playAnimatic
 
 GOTO _mainMenu
 
 _gamePlay:
+GOSUB _initSnips:
+
+
 set sprite alpha animbackdropsprite, 0
+
+GOSUB _doCountDown
 
 ` do the 3/2/1 timer countdown
 
-` play sfx 1
+play sfx 1
 songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000
-
+pauseOffset = 0
 do
 
-  if new spaceKey()
-    print "ESC!"
-    GOTO _mainmenu
+  if new key down(27) `ESCAPE KEY
+    
+    isPauseMenu = 1
+    pause sfx 1
+    pausedAt = timer()
+    GOSUB _mainmenu
+    GOSUB _docountdown
+    pauseOffset += timer() - pausedAt
+    resume sfx 1
   endif
 
   time = timer()
-  songTime = time - songStartTime
+  songTime = time - (songStartTime + pauseOffset)
   
   `312.5px/second for quarter note at 125bpm 
   ` speed = distance / time

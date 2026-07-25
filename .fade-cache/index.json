@@ -251,6 +251,50 @@
         "techniqueCount": 1
       },
       "compiledAt": "2026-07-24T22:40:49.113Z"
+    },
+    {
+      "assetName": "assets/animatics/Arrow",
+      "sourcePath": "assets/animatics/Arrow.png",
+      "sourceHash": "d8e535c22f4ddd6cc626a4b0cc9cfecee596082e100dc944030bd52dcc94c0ea",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/d8e535c22f4ddd6cc626a4b0cc9cfecee596082e100dc944030bd52dcc94c0ea.auto.v33.xnb",
+      "compiledAt": "2026-07-25T00:56:49.011Z"
+    },
+    {
+      "assetName": "assets/animatics/Business_boss",
+      "sourcePath": "assets/animatics/Business_boss.png",
+      "sourceHash": "d25a27f3d50898f8e7a7bff834064ad96e2daa8a8a27deaf981fa200abf5215b",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/d25a27f3d50898f8e7a7bff834064ad96e2daa8a8a27deaf981fa200abf5215b.auto.v33.xnb",
+      "compiledAt": "2026-07-25T00:56:49.027Z"
+    },
+    {
+      "assetName": "assets/animatics/Business_man",
+      "sourcePath": "assets/animatics/Business_man.png",
+      "sourceHash": "a39c9ff6aab6bd73e171eb509ddbc2159bd10ea805687fdea5e81c2101f423fd",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/a39c9ff6aab6bd73e171eb509ddbc2159bd10ea805687fdea5e81c2101f423fd.auto.v33.xnb",
+      "compiledAt": "2026-07-25T00:56:49.046Z"
+    },
+    {
+      "assetName": "assets/animatics/boardroom2",
+      "sourcePath": "assets/animatics/boardroom2.png",
+      "sourceHash": "553e78d6d5a67a1833c13a66ae7631607a0de78508ac85844b07a3b5ecd0f69f",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 256,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/553e78d6d5a67a1833c13a66ae7631607a0de78508ac85844b07a3b5ecd0f69f.auto.v33.xnb",
+      "compiledAt": "2026-07-25T01:01:05.359Z"
     }
   ]
 }

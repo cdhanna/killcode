@@ -1,135 +1,204 @@
 
 _setupMenu:
-  set sprite alpha animbackdropsprite, 255
-  show sprite animbackdropsprite
+set sprite alpha animbackdropsprite, 255
+show sprite animbackdropsprite
 
 
-  menuRenderTarget = reserve render target id(menuRenderTarget)
-  render target menuRenderTarget
-  set render target clear flags menurendertarget, 1
-  set render target background color menurendertarget, rgb(255, 0, 0, 0)
+menuRenderTarget = reserve render target id(menuRenderTarget)
+render target menuRenderTarget
+set render target clear flags menurendertarget, 1
+set render target background color menurendertarget, rgb(255, 0, 0, 0)
 
-  menuSprite = reserve sprite id(menuSprite)
-  sprite menuSprite, 0, 0, render target texture(menuRenderTarget)
-  order sprite menuSprite,ORDER_MENU + 1
-  set sprite offset menuSprite, 0, 0
-  set sprite alpha menuSprite, 0
-  menuFadeTween = reserve tween id(menuFadeTween)
+menuSprite = reserve sprite id(menuSprite)
+sprite menuSprite, 0, 0, render target texture(menuRenderTarget)
+order sprite menuSprite, ORDER_MENU + 1
+set sprite offset menuSprite, 0, 0
+set sprite alpha menuSprite, 0
+menuFadeTween = reserve tween id(menuFadeTween)
   
-  menuBackground = reserve sprite id(menuBackground)
-  sprite menubackground, 0, 0, 0
-  set sprite offset menuBackground, 0, 0
-  size sprite menuBackground, render width(), render height()
-  order sprite menubackground, ORDER_MENU - 1
-  color sprite menuBackground, backgroundColor
-  set sprite render target menuBackground, menuRenderTarget
+menuBackground = reserve sprite id(menuBackground)
+sprite menubackground, 0, 0, 0
+set sprite offset menuBackground, 0, 0
+size sprite menuBackground, render width(), render height()
+order sprite menubackground, ORDER_MENU - 1
+color sprite menuBackground, backgroundColor
+set sprite render target menuBackground, menuRenderTarget
 
 
-  upperTitleText = reserve text id(upperTitleText)
-  text upperTitleText, render width()/2, 100, 1, "the COUNTDOWN to"
-  order text upperTitleText, ORDER_MENU
-  size text y uppertitletext, 30
-  enable text drop shadow uppertitletext, 0, 2, rgb(70, 138, 255)
-  set text render target upperTitleText, menuRenderTarget
+upperTitleText = reserve text id(upperTitleText)
+text upperTitleText, render width() / 2, 100, 1, "the COUNTDOWN to"
+order text upperTitleText, ORDER_MENU
+size text y uppertitletext, 30
+enable text drop shadow uppertitletext, 0, 2, rgb(70, 138, 255)
+set text render target upperTitleText, menuRenderTarget
 
-  mainTitleText = reserve text id(mainTitleText)
-  text mainTitleText, render width()/2, 180, 1, "FREEDOM"
-  order text mainTitleText, ORDER_MENU
-  size text x mainTitleText, render width()/2
-  enable text drop shadow mainTitleText, -4, -4, rgb(70, 119, 255)
-  set text render target mainTitleText, menuRenderTarget
+mainTitleText = reserve text id(mainTitleText)
+text mainTitleText, render width() / 2, 180, 1, "FREEDOM"
+order text mainTitleText, ORDER_MENU
+size text x mainTitleText, render width() / 2
+enable text drop shadow mainTitleText, - 4, - 4, rgb(70, 119, 255)
+set text render target mainTitleText, menuRenderTarget
   
 
-  helperText = reserve text id(helperText)
-  text helperText, render width()/2, render height()-50, 1, "Arrow keys / LShift"
-  order text helperText, ORDER_MENU
-  size text y helperText, 30
-  enable text drop shadow helperText, -2, -2, rgb(70, 119, 255)
-  set text render target helperText, menuRenderTarget
+helperText = reserve text id(helperText)
+text helperText, render width() / 2, render height() - 50, 1, "Arrow keys / LShift"
+order text helperText, ORDER_MENU
+size text y helperText, 30
+enable text drop shadow helperText, - 2, - 2, rgb(70, 119, 255)
+set text render target helperText, menuRenderTarget
   
   
-  buttonStartY = 300
-  selectedButtonIndex = 0
-  buttonHeight = 100
+buttonStartY = 300
+selectedButtonIndex = 0
+buttonHeight = 100
 
-  dim menuButtons(2) as menuButton
-  menuButton as menuButton
-  for n = 0 to len(menuButtons) - 1
-    tid = reserve text id(menuButtons(n).textId)
+dim menuButtons(2) as menuButton
+menuButton as menuButton
+for n = 0 to len(menuButtons) - 1
+  tid = reserve text id(menuButtons(n).textId)
     
-    text tid, -100 + render width()/2,buttonStartY + n*buttonHeight, 1, "play"
-    set text render target tid, menuRenderTarget
-    enable text drop shadow tid, -4, -4, rgb(70, 119, 255)
-    set text offset tid, 0, .5
-    if n = 1
-      set text tid, "about"
-    endif
+  text tid, - 100 + render width() / 2, buttonStartY + n * buttonHeight, 1, "play"
+  set text render target tid, menuRenderTarget
+  enable text drop shadow tid, - 4, - 4, rgb(70, 119, 255)
+  set text offset tid, 0, .5
+  if n = 1
+    set text tid, "story"
+  endif
 
-    size text y tid, 80
-    order text tid, ORDER_MENU
-  next
+  size text y tid, 80
+  order text tid, ORDER_MENU
+next
 
-  selectionSprite = reserve sprite id(selectionSprite)
-  sprite selectionSprite, render width()/2 - 150, buttonStartY, 0
-  size sprite selectionSprite, 50, 50
-  order sprite selectionSprite, ORDER_MENU
-  set sprite render target selectionSprite, menuRenderTarget
+selectionSprite = reserve sprite id(selectionSprite)
+sprite selectionSprite, render width() / 2 - 150, buttonStartY, 0
+size sprite selectionSprite, 50, 50
+order sprite selectionSprite, ORDER_MENU
+set sprite render target selectionSprite, menuRenderTarget
 
-  buttonMoveTween = reserve tween id(buttonMoveTween)
-  RETURN
+buttonMoveTween = reserve tween id(buttonMoveTween)
+RETURN
+
+_setupPauseMenu:
+`pauseRenderTarget = reserve render target id(pauseRenderTarget)
+`render target pauserendertarget
+
+
+RETURN
 
 _mainMenu:
-  GOSUB _menubuttontweensetup
+
+selectedButtonIndex = 0
+GOSUB _menubuttontweensetup
+
+if isPauseMenu
+  hide text uppertitletext
+  set text maintitletext, "PAUSE"
+  color sprite menubackground, rgb(128, 128, 128, 128)
+  for n = 0 to len(menuButtons) - 1
+    select n
+      case 0
+        set text menuButtons(n).textId, "continue"
+      endcase
+      case 1
+        set text menuButtons(n).textId, "quit"
+      endcase
+    endselect
+  next
+else
+  show text upperTitleText
+  set text maintitletext, "FREEDOM"
+  color sprite menubackground, backgroundColor
+  for n = 0 to len(menuButtons) - 1
+    select n
+      case 0
+        set text menuButtons(n).textId, "play"
+      endcase
+      case 1
+        set text menuButtons(n).textId, "story"
+      endcase
+    endselect
+  next
+endif
+
+t# = timer()
+angle# = 0
 
 
+create basic tween menuFadeTween, 0, 1, 250, 0
+while is tween done(menuFadeTween) = 0
+  set sprite alpha menuSprite, tweenVal(menuFadeTween) * 255
+  sync
+endwhile
+
+do
+  dt# = timer() - t#
   t# = timer()
-  angle# = 0
 
-
-  create basic tween menuFadeTween, 0, 1, 250, 0
-  while is tween done(menuFadeTween) = 0
-    set sprite alpha menuSprite, tweenVal(menuFadeTween) * 255
-    sync
-  endwhile
-
-  do
-    dt# = timer() - t#
-    t# = timer()
-
-    if new upkey()
-      selectedButtonIndex -= 1
-      if selectedButtonIndex < 0 then selectedButtonIndex = len(menuButtons) - 1
+  if new upkey()
+    selectedButtonIndex - = 1
+    if selectedButtonIndex < 0 then selectedButtonIndex = len(menuButtons) - 1
     
-      GOSUB _menubuttontweensetup
+    GOSUB _menubuttontweensetup
 
-    endif
-    if new downkey()
-      selectedButtonIndex += 1
-      if selectedButtonIndex > len(menuButtons)-1 then selectedButtonIndex = 0
+  endif
+  if new downkey()
+    selectedButtonIndex + = 1
+    if selectedButtonIndex > len(menuButtons) - 1 then selectedButtonIndex = 0
       
-      GOSUB _menubuttontweensetup
+    GOSUB _menubuttontweensetup
+  endif
+
+  position sprite selectionSprite, render width() / 2 - 150, tweenVal(buttonMoveTween)
+
+  if new rightkey() or new left shiftKey()
+    `RETURN
+
+    create basic tween menuFadeTween, 1, 0, 250, 0
+    while is tween done(menuFadeTween) = 0
+      set sprite alpha menuSprite, tweenVal(menuFadeTween) * 255
+      sync
+    endwhile
+
+    print "MENU ENTER", selectedButtonIndex
+    if isPauseMenu
+      select selectedButtonIndex
+        case 0
+          print "going back to game"
+          RETURN
+        endcase
+        case 1
+          isPauseMenu = 0
+          GOTO _mainMenu
+        endcase
+      endselect
+    else
+      select selectedButtonIndex
+        case 0
+          print "going to game"
+          GOTO _gamePlay
+        endcase
+        case 1
+          print "going to intro"
+          GOSUB _animIntro
+          GOSUB _playAnimatic
+          print "back at menu"
+          create basic tween menuFadeTween, 0, 1, 250, 0
+          while is tween done(menuFadeTween) = 0
+            set sprite alpha menuSprite, tweenVal(menuFadeTween) * 255
+            sync
+          endwhile
+
+        endcase
+      endselect
     endif
-
-    position sprite selectionSprite, render width()/2 - 150, tweenVal(buttonMoveTween)
-
-    if new rightkey() or new left shiftKey()
-      `RETURN
+  endif
 
 
-      create basic tween menuFadeTween, 1, 0, 250, 0
-      while is tween done(menuFadeTween) = 0
-        set sprite alpha menuSprite, tweenVal(menuFadeTween) * 255
-        sync
-      endwhile
-      GOTO _gamePlay
-    endif
-
-
-    sync
-  loop
+  sync
+loop
 
 RETURN
 
 _menuButtonTweenSetup:
-  create basic tween buttonMoveTween, sprite y(selectionSprite), buttonStartY + selectedButtonIndex * buttonHeight, 250, 0
+create basic tween buttonMoveTween, sprite y(selectionSprite), buttonStartY + selectedButtonIndex * buttonHeight, 250, 0
 RETURN

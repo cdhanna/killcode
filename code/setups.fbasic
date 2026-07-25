@@ -1,6 +1,3 @@
-_setupCountdown:
-
-RETURN
 
 _setupLanes:
 
@@ -75,18 +72,26 @@ dim snips(32) as snip
       laneIndex = (n+rnd(2)) mod len(lanes),
       index = rnd(len(snippets$))
       `y = y,
-      songTime# = (songTimeCounter * bps * 1) * 1000 `arbitrary easy factor
+      ` songTime# = (songTimeCounter * bps * 1) * 1000 `arbitrary easy factor
     }
-    songTimeCounter += 1 + rnd(3)
-    print snips(n).songTime#
-    `y -= 2*noteDelta + rnd(4)*noteDelta
-
+    ` songTimeCounter += 1 + rnd(3)
 
     text snips(n).textId, getLaneX(snips(n).laneIndex), snips(n).y, 1, snippets$(snips(n).index)
     size text y snips(n).textId, 50
   next
   print "loaded snips"
 
+RETURN
+
+_initSnips:
+  songTimeCounter = 3 / bps
+
+  for n = 0 to len(snips) - 1
+    snips(n).songTime# = (songTimeCounter * bps * 1) * 1000
+    songTimeCounter += 1 + rnd(3)
+    set text position snips(n).textId, text x(snips(n).textId), -50
+
+  next
 RETURN
 
 _setupMan:

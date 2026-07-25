@@ -1,6 +1,6 @@
 _loadAssets:
 
-    load sfx clip 1, "assets/songs/demo_1"
+    load sfx clip 1, "assets/songs/demo_1_fast"
 
     TEX_NIGHTSCAPE = reserve texture id(TEX_NIGHTSCAPE)
     texture TEX_NIGHTSCAPE, "assets/animatics/Nightscape"
@@ -18,5 +18,17 @@ _loadAssets:
     texture TEX_MONSTER_4, "assets/animatics/Monster_4"
     TEX_MONSTER_5 = reserve texture id(TEX_MONSTER_5)
     texture TEX_MONSTER_5, "assets/animatics/Monster_5"
+
+    TEX_ARROW = reserve texture id(TEX_ARROW)
+    texture TEX_ARROW, "assets/animatics/Arrow"
+
+    TEX_BOARDROOM = reserve texture id(TEX_BOARDROOM)
+    texture TEX_BOARDROOM, "assets/animatics/boardroom2"
+
+    TEX_BIZ_MAN = reserve texture id(TEX_BIZ_MAN)
+    texture TEX_BIZ_MAN, "assets/animatics/Business_man"
+
+    TEX_BIZ_BOSS = reserve texture id(TEX_BIZ_BOSS)
+    texture TEX_BIZ_BOSS, "assets/animatics/Business_boss"
 
 RETURN

@@ -66,9 +66,14 @@ _playAnimatic:
 
   ` bring in the backdrop
   ` show sprite animbackdropsprite
-  create basic tween animBackdropTween, 0, 255, 500, 0
+  startSkip = 0
+  size sprite animskipsprite, 0*skipWidth*2, 4
+  skipRatio# = 0
+  create basic tween animBackdropTween, 0, 1, 500, 0
   while is tween done(animbackdroptween) = 0
-    set sprite alpha animbackdropsprite, tweenVal(animBackdropTween)
+    set sprite alpha animbackdropsprite, tweenVal(animBackdropTween) * 255
+    set sprite alpha animskipsprite, tweenVal(animBackdropTween) * 100
+    set text alpha animskiptext, tweenVal(animBackdropTween) * 180
     sync
   endwhile
 
@@ -130,7 +135,7 @@ _playAnimatic:
   do
   
     time = (timer() - animStartMs) + forceTimeStart
-
+    ` time = forceTimeStart
 
     if (left shiftKey())
       if startSkip = 0
@@ -142,6 +147,7 @@ _playAnimatic:
       else
       startSkip = 0
       size sprite animskipsprite, 0*skipWidth*2, 4
+      skipRatio# = 0
     endif
     if skipRatio# >= 1
       time = highestEndMs + 1
@@ -584,7 +590,7 @@ _animIntro:
   }
 
 
-  ` monster 5
+  ` monster 5 
   x = 65000
   y = 80
   anims(6) = {
@@ -609,6 +615,28 @@ _animIntro:
     ` color = rgb(0, 0, 0, 0)
     ` animMaskIndex = 1 ` use the index+1
   }
+  ` white flash overrides monster right
+  anims(6) = {
+    textureId = 0,
+    startTimeMs = (5 * 1000)
+    fadeInTimeMs = 50
+
+    endTimeMs = (5 * 1000)
+    fadeouttimems = 50
+    order = 15
+    startPos = {
+      x = 100,
+      y = 100
+    }
+    
+    color = rgb(255, 255, 255, 200)
+    startSize = {
+      x = x#
+      y = render height() - 200
+    }
+    ` color = rgb(0, 0, 0, 0)
+    ` animMaskIndex = 1 ` use the index+1
+  }
 
 
   `second panel
@@ -624,9 +652,149 @@ _animIntro:
       x = (render width() - x# + 250)
       y = render height() - 200
     }
-    color = rgb(255, 146, 146)
+    color = rgb(33, 22, 22)
   }
 
-  animCount = 11
+  `boss
+  panelLeft = x# + 150
+  x = panelLeft + 50
+  y = 120
+  anims(11) = {
+    textureId = TEX_BIZ_BOSS,
+    startTimeMs = 10 * 1000
+    fadeInTimeMs = 200
+    endTimeMs = 15 * 1000
+    startPos = {
+      x = x
+      y = y
+    }
+    endPos = {
+      x = x
+      y = y + 50
+    }
+    order = 10
+    startSize = {
+      x = 180,
+      y = 180
+    }
+    ` color = rgb(255, 146, 146)
+    animMaskIndex = 11 ` use the index+1
+  }
+  
+
+  `board room
+  x = panelLeft + 20
+  y = 190
+  anims(12) = {
+    textureId = TEX_BOARDROOM,
+    startTimeMs = 10 * 1000
+    fadeInTimeMs = 200
+    endTimeMs = 15 * 1000
+    startPos = {
+      x = x
+      y = y
+    }
+    endPos = {
+      x = x 
+      y = y + 50
+    }
+    order = 11
+    startSize = {
+      x = 256,
+      y = 512
+    }
+    endSize = {
+      x = 256,
+      y = 600
+    }
+    animMaskIndex = 11 ` use the index+1
+  }
+
+
+  `biz man 1
+  x = panelLeft + 5
+  y = 220
+  anims(13) = {
+    textureId = TEX_BIZ_MAN,
+    startTimeMs = 1000 + 10 * 1000
+    fadeInTimeMs = 500
+
+    endTimeMs = 15 * 1000
+    startPos = {
+      x = x
+      y = y
+    }
+    endPos = {
+      x = x 
+      y = y + 50
+    }
+    order = 11
+    startSize = {
+      x = 128,
+      y = 128
+    }
+    animMaskIndex = 11 ` use the index+1
+  }
+
+
+  `arrow
+  x = panelLeft + 0
+  y = 60
+  anims(14) = {
+    textureId = TEX_ARROW,
+    startTimeMs = 3000 + 10 * 1000
+    fadeInTimeMs = 500
+
+    endTimeMs = 15 * 1000
+    startPos = {
+      x = x
+      y = y
+    }
+    endPos = {
+      x = x
+      y = y - 50
+    }
+    order = 8
+    startSize = {
+      x = 350,
+      y = 350
+    }
+    endSize = {
+      x = 380
+      y = 400
+    }
+    color = rgb(0,255,0)
+    ` animMaskIndex = 11 ` use the index+1
+  }
+
+
+  `biz man 2
+  x = panelLeft + 145
+  y = 320
+  anims(15) = {
+    textureId = TEX_BIZ_MAN,
+    startTimeMs = 2000 + 10 * 1000
+    fadeInTimeMs = 500
+
+    endTimeMs = 15 * 1000
+    startPos = {
+      x = x
+      y = y
+    }
+    endPos = {
+      x = x 
+      y = y + 50
+    }
+    order = 11
+    startSize = {
+      x = 200,
+      y = 200
+    }
+    xFlip = 1
+    animMaskIndex = 11 ` use the index+1
+  }
+
+
+  animCount = 16
 
 RETURN
