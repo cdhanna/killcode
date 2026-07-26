@@ -23,8 +23,6 @@ GOSUB _setupStatusText
 GOSUB _setupGameOver
 GOSUB _setupVfx
 
-GOSUB _setupCode
-GOSUB _setupcountdown
 
 hide text loadingText
 
@@ -32,8 +30,14 @@ GOSUB _setupAnimatics
 
 GOSUB _setupMenu
 
-GOSUB _animIntro
-GOSUB _playAnimatic
+GOSUB _fullAnimIntro
+
+GOSUB _setupCode
+GOSUB _setupcountdown
+
+
+` GOSUB _animIntro
+` GOSUB _playAnimatic
 
 ` GOSUB _animIntroBinSkull
 ` GOSUB _playAnimatic
@@ -47,7 +51,7 @@ GOSUB _initMan:
 
 set sprite alpha animbackdropsprite, 0
 
-GOSUB _doCountDown
+` GOSUB _doCountDown
 
 ` do the 3/2/1 timer countdown
 
@@ -128,7 +132,8 @@ do
         if (snip.missed)
           lives = max(0, lives - 1)
           combo = 0
-          set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))
+          GOSUB _applySadAfro
+          ` set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))
 
         endif
         
@@ -229,7 +234,7 @@ do
 
       if (scoreAmount > 0)
         ` hit!
-        set sprite texture dancemansprite, happyDanceTextures(rnd(len(happyDanceTextures)))
+        GOSUB _applyHappyAfro
         combo = min(combo + 1, maxCombo)
         
         statusCode = scoreAmount
@@ -250,7 +255,9 @@ do
         play sfx impactSfx
         set sfx pitch impactSfx, (rnd(10)-5)*.1
 
-        set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))
+        GOSUB _applySadAfro
+
+        ` set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))
 
       endif
       GOSUB _punchLaneColor
@@ -261,7 +268,6 @@ do
       set text scoreTextId, str$(score)
       size text x scoreTextId, 100
 
-      set sprite flip dancemansprite, rnd(2), 0
 
 
       color text snip.textId, rgb(targetRatio# * 255, (1 - targetRatio#) * 255, 0)

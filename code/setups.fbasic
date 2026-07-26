@@ -1,6 +1,17 @@
 
 _setupLanes:
 
+  dim rainbowColors(8)
+  rainbowColors(0) = rgb(255, 74, 74)
+  rainbowColors(1) = rgb(255, 155, 74)
+  rainbowColors(2) = rgb(249, 255, 74)
+  rainbowColors(3) = rgb(128, 255, 74)
+  rainbowColors(4) = rgb(74, 255, 207)
+  rainbowColors(5) = rgb(74, 101, 255)
+  rainbowColors(6) = rgb(210, 74, 255)
+  rainbowColors(7) = rgb(255, 74, 225)
+
+
   gameRenderTarget = reserve render target id(gameRenderTarget)
   render target gameRenderTarget
   set render target background color gameRenderTarget, rgb(32, 32, 32)
@@ -219,16 +230,47 @@ _initMan:
   set sprite render target afroSprite, gameRenderTarget
   order sprite afroSprite, -1
   color sprite afroSprite, rgb(203, 255, 214)
-  size sprite afroSprite, 100, 100
+  size sprite afroSprite, 140, 140
   
   afterIndex = 0
   happyIndex = 0
+  sadIndex = 0
 
+  GOSUB _applyHappyAfro
 
 RETURN
 
 _applyHappyAfro:
-  position sprite afroSprite, sprite x(danceManSprite) + happyAfros(happyIndex).x, sprite y(danceManSprite) + happyAfros(happyIndex).y
+
+  isFlip = rnd(2)
+  flipSign = 1
+  if isFlip then flipSign = -1
+  set sprite flip dancemansprite, isFlip, 0
+  set sprite flip afroSprite, isFlip, 0
+
+  happyIndex = rnd(len(happyDanceTextures))
+  ` happyIndex = 3
+  set sprite texture dancemansprite, happyDanceTextures(happyIndex)
+
+  position sprite afroSprite, sprite x(danceManSprite) + happyAfros(happyIndex).x*flipSign, sprite y(danceManSprite) + happyAfros(happyIndex).y
+  rotate sprite afroSprite, happyAfros(happyIndex).angle + (happyAfros(happyIndex).dumbFlip * 3.14 * isFlip)
+  color sprite afroSprite, rainbowColors(rnd(len(rainbowColors)))
+  set sprite alpha afroSprite, 200
+
+RETURN
+_applySadAfro:
+  isFlip = rnd(2)
+  flipSign = 1
+  if isFlip then flipSign = -1
+  set sprite flip dancemansprite, isFlip, 0
+  set sprite flip afroSprite, isFlip, 0
+
+  sadIndex = rnd(len(sadDanceTextures))
+  set sprite texture dancemansprite, sadDanceTextures(sadIndex)
+
+  position sprite afroSprite, sprite x(danceManSprite) + sadAfros(sadIndex).x*flipSign, sprite y(danceManSprite) + sadAfros(sadIndex).y
+  rotate sprite afroSprite, sadAfros(sadIndex).angle + (sadAfros(sadIndex).dumbFlip * 3.14 * isFlip)
+
 RETURN
 
 _setupScoreTexts:
@@ -316,15 +358,6 @@ _setupStatusText:
   statusColors(1) = rgb(255, 128, 64)
   statusColors(0) = rgb(255, 0, 0)
 
-  dim rainbowColors(8)
-  rainbowColors(0) = rgb(255, 74, 74)
-  rainbowColors(1) = rgb(255, 155, 74)
-  rainbowColors(2) = rgb(249, 255, 74)
-  rainbowColors(3) = rgb(128, 255, 74)
-  rainbowColors(4) = rgb(74, 255, 207)
-  rainbowColors(5) = rgb(74, 101, 255)
-  rainbowColors(6) = rgb(210, 74, 255)
-  rainbowColors(7) = rgb(255, 74, 225)
 
   dim perfectStatusMessages$(3)
   perfectStatusMessages$(0) = "PERF"

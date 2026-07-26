@@ -2,6 +2,21 @@ _loadAssets:
 
     load sfx clip 1, "assets/songs/demo5a"
 
+
+    reserve sfx clip id(SFX_INTRO_1)
+    load sfx clip SFX_INTRO_1, "assets/songs/intro_1"
+
+    reserve sfx clip id(SFX_INTRO_2)
+    load sfx clip SFX_INTRO_2, "assets/songs/intro_2"
+
+    reserve sfx clip id(SFX_INTRO_3)
+    load sfx clip SFX_INTRO_3, "assets/songs/intro_3"
+
+
+    reserve sfx clip id(SFX_INTRO_4)
+    load sfx clip SFX_INTRO_4, "assets/songs/intro_4"
+
+
     reserve sfx clip id(SFX_OOPS)
     load sfx clip SFX_OOPS, "assets/songs/oops"
 
