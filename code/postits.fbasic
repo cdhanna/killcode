@@ -11,6 +11,12 @@ _setupNotes:
     }
   next
 
+  set texture frame grid TEX_PAPERS, 2, 2
+
+  reserve sprite id(sid)
+`  sprite sid, 200, 200, TEX_PAPERS
+`  set sprite frame sid, 1
+
 RETURN
 
 

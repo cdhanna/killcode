@@ -90,7 +90,7 @@ float4 sampleColor(float2 screenUv, float2 warpedUv)
     float vigMask = vig.x * vig.y;
     
     col = clamp(col * vigMask, 0.0, 1.0);
-    col.a = 1.0;
+    col.a += .4;
     return col;
 }
 
@@ -108,7 +108,7 @@ float4 MainPS(PSInput input) : COLOR
 
     // black outside the curved screen
     if (mappedUv.x < 0.0 || mappedUv.x > 1.0 || mappedUv.y < 0.0 || mappedUv.y > 1.0)
-        return float4(.3, .3, .3, 1);
+        return float4(.3, .3, .3, 0.0);
 
     return sampleColor(input.TexCoord, mappedUv);
 }

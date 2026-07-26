@@ -13,6 +13,7 @@ GOSUB _setupMan
 GOSUB _setupScoreTexts
 GOSUB _setupCode
 GOSUB _setupcountdown
+GOSUB _setupNotes
 
 hide text loadingText
 
@@ -26,7 +27,7 @@ GOSUB _setupMenu
 GOSUB _animIntroBinSkull
 GOSUB _playAnimatic
 
-GOTO _mainMenu
+` GOTO _mainMenu
 
 _gamePlay:
 GOSUB _initSnips:

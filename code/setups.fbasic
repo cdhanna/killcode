@@ -16,6 +16,12 @@ _setupLanes:
   size sprite gameSprite, render width() - 200, render height() - 200
   set sprite effect gameSprite, crtEffect
 
+  compSprite = reserve sprite id(compSprite)
+  sprite compSprite, 0, 0, TEX_COMP
+  set sprite offset compSprite, 0, 0
+  order sprite compSprite, -11
+  size sprite compSprite, render width(), render height()
+  color sprite compSprite, rgb(92, 92, 61)
 
   dim laneKeys$(4)
   laneKeys$(0) = "F"

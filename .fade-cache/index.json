@@ -319,20 +319,6 @@
       "compiledAt": "2026-07-26T01:03:58.490Z"
     },
     {
-      "assetName": "crt",
-      "sourcePath": "crt.fx",
-      "sourceHash": "d049560331820f9089cbea62891ed8a60cf14784763508960b995460199ba37c",
-      "format": "shader-mgfx-v10",
-      "encoderVersion": 33,
-      "width": 0,
-      "height": 0,
-      "blobPath": ".fade-cache/blobs/d049560331820f9089cbea62891ed8a60cf14784763508960b995460199ba37c.shader-mgfx-v10.v33.xnb",
-      "metadata": {
-        "techniqueCount": 1
-      },
-      "compiledAt": "2026-07-26T03:08:55.806Z"
-    },
-    {
       "assetName": "assets/animatics/Binary",
       "sourcePath": "assets/animatics/Binary.png",
       "sourceHash": "1dacd7ce992f73914f0c143fa4501423bbfffd82b648d9a0420a8a2c7dc9318a",
@@ -342,6 +328,42 @@
       "height": 512,
       "blobPath": ".fade-cache/blobs/1dacd7ce992f73914f0c143fa4501423bbfffd82b648d9a0420a8a2c7dc9318a.auto.v33.xnb",
       "compiledAt": "2026-07-26T03:32:51.618Z"
+    },
+    {
+      "assetName": "assets/papers_fix",
+      "sourcePath": "assets/papers_fix.png",
+      "sourceHash": "0f9e6981a2c74c1d16def4d74373699661bfb9a8db9a03762b517533ceffbea3",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 488,
+      "blobPath": ".fade-cache/blobs/0f9e6981a2c74c1d16def4d74373699661bfb9a8db9a03762b517533ceffbea3.auto.v33.xnb",
+      "compiledAt": "2026-07-26T04:32:23.548Z"
+    },
+    {
+      "assetName": "crt",
+      "sourcePath": "crt.fx",
+      "sourceHash": "920a5f912983ee98f223bb997eefd6046d9045b4e30b910ee3184d2b5bd93330",
+      "format": "shader-mgfx-v10",
+      "encoderVersion": 33,
+      "width": 0,
+      "height": 0,
+      "blobPath": ".fade-cache/blobs/920a5f912983ee98f223bb997eefd6046d9045b4e30b910ee3184d2b5bd93330.shader-mgfx-v10.v33.xnb",
+      "metadata": {
+        "techniqueCount": 1
+      },
+      "compiledAt": "2026-07-26T04:40:17.612Z"
+    },
+    {
+      "assetName": "assets/comp",
+      "sourcePath": "assets/comp.png",
+      "sourceHash": "0dd9f9cc1fb207218da0263e41b4535aabdabc45f7ff14dd06b6fb4bc1f1ad0d",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 1842,
+      "height": 1046,
+      "blobPath": ".fade-cache/blobs/0dd9f9cc1fb207218da0263e41b4535aabdabc45f7ff14dd06b6fb4bc1f1ad0d.auto.v33.xnb",
+      "compiledAt": "2026-07-26T04:52:39.972Z"
     }
   ]
 }
