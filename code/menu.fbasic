@@ -353,6 +353,8 @@ RETURN
 
 
 _doWin:
+  sfx fanfareSfx, SFX_VICTORY
+  play sfx fanfareSfx
 
   set text defeatText, "FREEDOM!!"
   set text tryAgainText, "DO AN ENCORE"
@@ -402,6 +404,7 @@ _doWin:
 
     if new left shiftkey() or new rightKey()
       set sprite alpha gameOverSprite, 0
+      pause sfx fanfareSfx
       
       GOTO _mainMenu
     endif

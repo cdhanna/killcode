@@ -5,6 +5,11 @@ _main:
 ` setup music
 sfx 1, 1
 
+reserve sfx id(impactSfx)
+set sfx volume impactSfx, .3
+
+reserve sfx id(fanfareSfx)
+sfx fanfareSfx, SFX_VICTORY
 
 GOSUB _setupSnippets
 GOSUB _setupLanes
@@ -44,7 +49,7 @@ set sprite alpha animbackdropsprite, 0
 
 ` do the 3/2/1 timer countdown
 
-` play sfx 1
+play sfx 1
 songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000
 pauseOffset = 0
@@ -80,9 +85,13 @@ do
 
 
   if (lives <= 0)
-    GOTO _doGameOver
+    pause sfx 1
+    GOTO _doWin
+
+    ` GOTO _doGameOver
   endif
   if (timeRemainingSeconds <= 0)
+    pause sfx 1
 
     if (pendingCodeIndex >= secretCodeSize)
       GOTO _doWin
@@ -222,10 +231,20 @@ do
         GOSUB _punchStatus
         snips(bestSnipIndex).missed = 0
 
+        sfx impactSfx, SFX_YES
+        set sfx volume impactSfx, .1
+        play sfx impactSfx
+        set sfx pitch impactSfx, (rnd(10)-5)*.1
 
         else
         combo = 0
         statusCode = 0
+
+        sfx impactSfx, SFX_OOPS
+        set sfx volume impactSfx, .1
+        play sfx impactSfx
+        set sfx pitch impactSfx, (rnd(10)-5)*.1
+
         set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))
 
       endif
