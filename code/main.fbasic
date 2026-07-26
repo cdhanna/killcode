@@ -83,7 +83,12 @@ do
     GOTO _doGameOver
   endif
   if (timeRemainingSeconds <= 0)
-    GOTO _midWin
+
+    if (pendingCodeIndex >= secretCodeSize)
+      GOTO _doWin
+    endif
+
+    GOTO _doMidWin
   endif
 
   `312.5px/second for quarter note at 125bpm 
@@ -111,6 +116,7 @@ do
         if (snip.missed)
           lives = max(0, lives - 1)
           combo = 0
+          set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))
 
         endif
         

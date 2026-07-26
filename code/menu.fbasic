@@ -244,6 +244,8 @@ _doGameOver:
   set text tryAgainText, "TRY AGAIN"
   set text bossmanText, "BOSSMAN SAYS 'YOU ARE FIRED'"
   enable text drop shadow tryAgainText, 0, 10, rgb(128, 0, 0)
+  enable text drop shadow defeatText, 0, -15, rgb(255, 0, 0)
+  
   size text x defeatText, render width() - 200
 
 
@@ -304,6 +306,7 @@ _doMidWin:
   set text bossmanText, "YOU DID NOT ENTER THE KILLCODE"
   enable text drop shadow tryAgainText, 0, 10, rgb(128, 128, 0)
   size text x defeatText, render width() - 200
+  enable text drop shadow defeatText, 0, -15, rgb(255, 0, 0)
 
 
   create basic tween gameOverTween, 0, 1, 500, 300
@@ -336,6 +339,66 @@ _doMidWin:
     color text bossmanText, color
     color text defeatText, color
     set text alpha tryAgainText, tweenVal(gameOverTween)*255
+
+    if new left shiftkey() or new rightKey()
+      set sprite alpha gameOverSprite, 0
+      
+      GOTO _mainMenu
+    endif
+
+    sync
+  loop
+
+RETURN
+
+
+_doWin:
+
+  set text defeatText, "FREEDOM!!"
+  set text tryAgainText, "DO AN ENCORE"
+  set text bossmanText, "YOU SAVED HUMANITY, FRIEND"
+  enable text drop shadow defeatText, 0, -10, rgb(128, 255, 0)
+  enable text drop shadow tryAgainText, 0, 7, rgb(128, 255, 0)
+  size text x defeatText, render width() - 200
+
+
+  create basic tween gameOverTween, 0, 1, 500, 300
+  set text alpha bossManText, 0
+  set text alpha defeatText, 0
+  set text alpha tryAgainText, 0
+  while is tween done(gameOverTween) = 0
+    set sprite alpha gameOverSprite, tweenVal(gameoverTween) * 255
+    sync
+  endwhile
+
+  create basic tween gameOverTween, 0, 1, 500, 0
+  set tween easing gameOverTween, 1
+  while is tween done(gameOverTween) = 0
+    position sprite danceManSprite, sprite x(danceManSprite), render height()/2 + tweenVal(gameOverTween)*100
+
+    for n = 0 to len(snips) - 1
+      set text alpha snips(n).textId, (1 - tweenVal(gameoverTween))*255
+    next
+    sync
+  endwhile
+  create basic tween gameOverTween, 0, 1, 500, 0
+
+
+
+  happy = 0
+  happyTime = 150
+  do
+    color = rgb(200, 255, 200, 180*tweenVal(gameOverTween))
+    color text bossmanText, color
+    color text defeatText, color
+    set text alpha tryAgainText, tweenVal(gameOverTween)*255
+
+    if timer() > happyTime
+      set sprite texture dancemansprite, happyDanceTextures(happy mod (len(happyDanceTextures)))
+      inc happy
+      happyTime = timer() + 150
+      set sprite flip danceManSprite rnd(2), 0
+    endif
 
     if new left shiftkey() or new rightKey()
       set sprite alpha gameOverSprite, 0
