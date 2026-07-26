@@ -480,6 +480,50 @@
       "height": 512,
       "blobPath": ".fade-cache/blobs/6aea3f3b4ba3a18bd5cc4a1a85a33ebe0e56306ae949b90ad90a5454735df117.auto.v33.xnb",
       "compiledAt": "2026-07-26T08:08:09.144Z"
+    },
+    {
+      "assetName": "assets/vfx/boom1",
+      "sourcePath": "assets/vfx/boom1.png",
+      "sourceHash": "945a598fe23288b0b903791dcf6de3a700ddddd65fe2d69b29e6f5f3cd7d140b",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 2048,
+      "height": 2048,
+      "blobPath": ".fade-cache/blobs/945a598fe23288b0b903791dcf6de3a700ddddd65fe2d69b29e6f5f3cd7d140b.auto.v33.xnb",
+      "compiledAt": "2026-07-26T11:08:34.694Z"
+    },
+    {
+      "assetName": "assets/vfx/boom2",
+      "sourcePath": "assets/vfx/boom2.png",
+      "sourceHash": "d29887e280fa8648b422432f6e3c04c8fce9bd50893fd199aa35fbb6efddc001",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 2048,
+      "height": 2048,
+      "blobPath": ".fade-cache/blobs/d29887e280fa8648b422432f6e3c04c8fce9bd50893fd199aa35fbb6efddc001.auto.v33.xnb",
+      "compiledAt": "2026-07-26T11:08:34.787Z"
+    },
+    {
+      "assetName": "assets/vfx/boom3",
+      "sourcePath": "assets/vfx/boom3.png",
+      "sourceHash": "cb9f24ebc3dc9b214e52275700506fc801f4988c81638cebd4c98306e475c9d2",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 2048,
+      "height": 2048,
+      "blobPath": ".fade-cache/blobs/cb9f24ebc3dc9b214e52275700506fc801f4988c81638cebd4c98306e475c9d2.auto.v33.xnb",
+      "compiledAt": "2026-07-26T11:08:34.876Z"
+    },
+    {
+      "assetName": "assets/vfx/boom4",
+      "sourcePath": "assets/vfx/boom4.png",
+      "sourceHash": "b05ab70118ac5e809f2ee15c1f7d304b3024eafbab64d0a96e61f72864222cfc",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 2048,
+      "height": 2048,
+      "blobPath": ".fade-cache/blobs/b05ab70118ac5e809f2ee15c1f7d304b3024eafbab64d0a96e61f72864222cfc.auto.v33.xnb",
+      "compiledAt": "2026-07-26T11:08:35.032Z"
     }
   ]
 }

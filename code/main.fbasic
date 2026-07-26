@@ -21,6 +21,7 @@ GOSUB _setupScoreTexts
 GOSUB _setupNotes
 GOSUB _setupStatusText
 GOSUB _setupGameOver
+GOSUB _setupVfx
 
 GOSUB _setupCode
 GOSUB _setupcountdown
@@ -37,7 +38,7 @@ GOSUB _playAnimatic
 ` GOSUB _animIntroBinSkull
 ` GOSUB _playAnimatic
 
-` GOTO _mainMenu
+GOTO _mainMenu
 
 _gamePlay:
 GOSUB _initSnips:
@@ -46,7 +47,7 @@ GOSUB _initMan:
 
 set sprite alpha animbackdropsprite, 0
 
-` GOSUB _doCountDown
+GOSUB _doCountDown
 
 ` do the 3/2/1 timer countdown
 
@@ -83,16 +84,17 @@ do
 
   GOSUB _updateStatus
   GOSUB _updateLanes
+  GOSUB _loopVfx
 
 
   if (lives <= 0)
     pause sfx mainMusic
-    GOTO _doMidWin
+    ` GOTO _doMidWin
 
-    ` GOTO _doGameOver
+    GOTO _doGameOver
   endif
   if (timeRemainingSeconds <= 0)
-    pause sfx 1
+    pause sfx mainMusic
 
     if (pendingCodeIndex >= secretCodeSize)
       GOTO _doWin
@@ -207,7 +209,9 @@ do
         if pendingCodeIndex < secretCodeSize
           if secretCode(pendingCodeIndex).index = snip.index
             if targetRatio# < .5
-              color text secretCode(pendingCodeIndex).textId, rgb(255, 128, 0)
+              color text secretCode(pendingCodeIndex).textId, rgb(128, 64, 0)
+              
+              spawnBoom(text x(secretCode(pendingCodeIndex).textId) + rnd(50)-25, text y(secretCode(pendingCodeIndex).textId) + rnd(50)-25, 300)
               pendingCodeIndex += 1
               targetRatio# -= 1 `bonus points!
             endif
@@ -311,6 +315,15 @@ type snip
   scaleTween
   fadeTween
   rotateTween
+endtype
+
+type vfx
+  textureId
+  spriteId
+  startFrame
+  endFrame
+  startTimeMs
+  durationMs
 endtype
 
 

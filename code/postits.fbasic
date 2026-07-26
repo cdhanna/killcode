@@ -79,25 +79,54 @@ _setupNotes:
   enable text drop shadow scoreTextId, -2, 2, rgb(0,0,0,128)
 
   reserve sprite id(sid)
-  sprite sid, 80, render height() - 200, TEX_PAPERS
+  sprite sid, 80, render height() - 250, TEX_PAPERS
   set sprite frame sid, 3
   size sprite sid, 140, 140
   order sprite sid, -1
   rotate sprite sid, -0.2
   color sprite sid, rgb(255, 179, 211)
 
+  reserve sprite id(sid)
+  sprite sid, 100, render height() - 150, TEX_PAPERS
+  set sprite frame sid, 3
+  size sprite sid, 140, 140
+  order sprite sid, -1
+  rotate sprite sid, .1
+  color sprite sid, noteColors(2)
+
   reserve text id(tid)
-  text tid, 80, render height() - 220, 2, "SECRET"
+  text tid, 80, render height() - 270, 2, "SECRET"
   order text tid, 2
   rotate text tid, -.2
   size text y tid, 40
   color text tid, rgb(37, 37, 37, 180)
  
   reserve text id(tid)
-  text tid, 80, render height() - 190, 2, "KILLCODE"
+  text tid, 80, render height() - 240, 2, "KILLCODE"
   order text tid, 2
   rotate text tid, -.1
   size text y tid, 45
+  color text tid, rgb(37, 37, 37, 220)
+
+  reserve text id(tid)
+  text tid, 80, render height() - 190, 2, "HOLD"
+  order text tid, 2
+  rotate text tid, -.08
+  size text y tid, 40
+  color text tid, rgb(37, 37, 37, 220)
+
+  reserve text id(tid)
+  text tid, 100, render height() - 160, 2, "L SHIFT"
+  order text tid, 2
+  rotate text tid, -.05
+  size text y tid, 45
+  color text tid, rgb(37, 37, 37, 220)
+
+  reserve text id(tid)
+  text tid, 100, render height() - 140, 2, "TO INJECT"
+  order text tid, 2
+  rotate text tid, -.02
+  size text y tid, 35
   color text tid, rgb(37, 37, 37, 220)
 
   reserve sprite id(sid)

@@ -1,6 +1,6 @@
 _loadAssets:
 
-    load sfx clip 1, "assets/songs/demo5"
+    load sfx clip 1, "assets/songs/demo5a"
 
     reserve sfx clip id(SFX_OOPS)
     load sfx clip SFX_OOPS, "assets/songs/oops"
@@ -14,8 +14,34 @@ _loadAssets:
     reserve sfx clip id(SFX_MID_VICTORY)
     load sfx clip SFX_VICTORY, "assets/songs/partialWin"
 
+    reserve sfx clip id(SFX_FAIL)
+    load sfx clip SFX_FAIL, "assets/songs/fail"
+
+
     reserve sfx clip id(SFX_THUNDER)
     load sfx clip SFX_THUNDER, "assets/animatics/sfx/thunder"
+
+    dim SFX_BOOM(3)
+    reserve sfx clip id(SFX_BOOM(0))
+    reserve sfx clip id(SFX_BOOM(1))
+    reserve sfx clip id(SFX_BOOM(2))
+    load sfx clip SFX_BOOM(0), "assets/animatics/sfx/explosion01"
+    load sfx clip SFX_BOOM(1), "assets/animatics/sfx/explosion02"
+    load sfx clip SFX_BOOM(2), "assets/animatics/sfx/explosion03"
+
+    dim TEX_BOOM(4)
+    reserve texture id(TEX_BOOM(0))
+    reserve texture id(TEX_BOOM(1))
+    reserve texture id(TEX_BOOM(2))
+    reserve texture id(TEX_BOOM(3))
+    texture TEX_BOOM(0), "assets/vfx/boom1"
+    texture TEX_BOOM(1), "assets/vfx/boom2"
+    texture TEX_BOOM(2), "assets/vfx/boom3"
+    texture TEX_BOOM(3), "assets/vfx/boom4"
+    for n = 0 to len(TEX_BOOM) - 1
+        set texture frame grid TEX_BOOM(n), 8,8
+    next
+
 
     TEX_PAPERS = reserve texture id(TEX_PAPERS)
     texture TEX_PAPERS, "assets/papers_fix"

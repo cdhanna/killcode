@@ -204,7 +204,7 @@ _setupMan:
 
   ` dancing man
   danceManSprite = reserve sprite id(danceManSprite)
-  
+
 RETURN
 _initMan:
   sprite danceManSprite, render width()/2, render height()/2, happyDanceTextures(rnd(len(happyDanceTextures)))
@@ -394,3 +394,57 @@ _updateStatus:
   size text y statusText, tweenVal(statusPunchTween)
   set text alpha statusText, tweenVal(statusFadeTween)
 RETURN
+
+_setupVfx:
+  DIM vfxs(20) as vfx
+  vfx as vfx
+
+  global nextVfx = 0
+  for n = 0 to len(vfxs) - 1
+    vfxs(n) = {
+      spriteId = reserve sprite id(s)
+    }
+  next
+
+  global boomSfx
+  reserve sfx id(boomSfx)
+RETURN
+
+_loopVfx:
+  time = timer()
+  if nextVfx >= len(vfxs) - 1
+    nextVfx = 0
+  endif
+  for n = 0 to len(vfxs) - 1
+    vfx = vfxs(n)
+    endTime = vfx.startTimeMs + vfx.durationMs
+    ratio# = max(0, min(1, ((endTime - time) / (vfx.durationMs + 1.0))))
+    ratio# = 1 - ratio#
+    if (ratio# <= 0 or ratio# >= 1)
+      hide sprite vfx.spriteId
+      else
+      show sprite vfx.spriteId
+    endif
+    frame = vfx.startFrame + ratio# * (vfx.endFrame - vfx.startFrame)
+    set sprite frame vfx.spriteId, frame
+  next
+RETURN
+
+function spawnBoom(x, y, duration)
+  vfx = vfxs(nextVfx)
+
+  sfx boomSfx, SFX_BOOM(rnd(len(SFX_BOOM)))
+  play sfx boomSfx
+  vfx.textureId = TEX_BOOM(rnd(len(TEX_BOOM)))
+  sprite vfx.spriteId, x, y, vfx.textureId
+  order sprite vfx.spriteId, 10
+  set sprite frame vfx.spriteId, 0
+
+  size sprite vfx.spriteId, 400, 400
+  vfx.startFrame = 0
+  vfx.endFrame = 8*8
+  vfx.startTimeMs = timer()
+  vfx.durationMs = duration
+  vfxs(nextVfx) = vfx
+  inc extVfx
+endfunction 

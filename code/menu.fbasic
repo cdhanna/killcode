@@ -239,6 +239,8 @@ _setupGameOver:
 RETURN
 
 _doGameOver:
+  sfx fanfareSfx, sfx_fail
+  play sfx fanfareSfx
 
   set text defeatText, "DEFEAT"
   set text tryAgainText, "TRY AGAIN"
@@ -289,7 +291,7 @@ _doGameOver:
 
     if new left shiftkey() or new rightKey()
       set sprite alpha gameOverSprite, 0
-      
+      pause sfx fanfareSfx
       GOTO _mainMenu
     endif
 
