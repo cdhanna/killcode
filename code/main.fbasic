@@ -14,6 +14,7 @@ GOSUB _setupMan
 GOSUB _setupScoreTexts
 GOSUB _setupNotes
 GOSUB _setupStatusText
+GOSUB _setupGameOver
 
 GOSUB _setupCode
 GOSUB _setupcountdown
@@ -34,6 +35,7 @@ GOSUB _setupMenu
 
 _gamePlay:
 GOSUB _initSnips:
+GOSUB _initMan:
 
 
 set sprite alpha animbackdropsprite, 0
@@ -75,6 +77,12 @@ do
 
   GOSUB _updateStatus
   GOSUB _updateLanes
+
+
+  if (lives <= 0)
+    GOTO _doGameOver
+  endif
+
   `312.5px/second for quarter note at 125bpm 
   ` speed = distance / time
   ` speed = 150px / .48 (.48 is 60/125 bpm)
@@ -98,7 +106,7 @@ do
         
         
         if (snip.missed)
-          lives = lives - 1
+          lives = max(0, lives - 1)
           combo = 0
 
         endif
@@ -232,6 +240,8 @@ do
   next
 
   sync
+  
+
 loop
 
 

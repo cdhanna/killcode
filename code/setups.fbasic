@@ -195,6 +195,7 @@ _initSnips:
     snips(n).missed = 1
     songTimeCounter += 1 + rnd(3)
     set text position snips(n).textId, text x(snips(n).textId), -50
+    set text alpha snips(n).textId, 255
 
   next
 RETURN
@@ -203,6 +204,9 @@ _setupMan:
 
   ` dancing man
   danceManSprite = reserve sprite id(danceManSprite)
+  
+RETURN
+_initMan:
   sprite danceManSprite, render width()/2, render height()/2, happyDanceTextures(rnd(len(happyDanceTextures)))
   size sprite x danceManSprite, render width() / 3
   set sprite render target danceManSprite, gameRenderTarget

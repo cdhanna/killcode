@@ -202,3 +202,89 @@ RETURN
 _menuButtonTweenSetup:
 create basic tween buttonMoveTween, sprite y(selectionSprite), buttonStartY + selectedButtonIndex * buttonHeight, 250, 0
 RETURN
+
+
+_setupGameOver:
+  reserve render target id(gameOverTarget)
+  render target gameOverTarget
+  set render target background color gameOverTarget, rgb(0,0,0,128)
+
+  reserve sprite id (gameOverSprite)
+  sprite gameOverSprite, 0, 0, render target texture(gameOverTarget)
+  set sprite offset gameoverSprite, 0, 0
+  set sprite render target gameOverSprite, gameRenderTarget
+  set sprite alpha gameOverSprite, 0
+  reserve text id(defeatText)
+  text defeatText, render width()/2, 200, 1, "DEFEAT"
+  size text x defeatText, render width() - 200
+  enable text drop shadow defeatText, 0, -15, rgb(255, 0, 0)
+  set text render target defeatText, gameOverTarget
+
+
+  reserve text id(bossmanText)
+  text bossmanText, render width()/2, 350, 1, "BOSSMAN SAYS 'YOU ARE FIRED!'"
+  size text x bossmanText, render width() - 150
+  enable text drop shadow bossmanText, 0, 10, rgb(128, 0, 0)
+  set text render target bossmanText, gameOverTarget
+
+  reserve text id(tryAgainText)
+  text tryAgainText, render width()/2, 500, 1, "TRY AGAIN"
+  size text y tryAgainText, 60
+  enable text drop shadow tryAgainText, 0, 10, rgb(128, 0, 0)
+  set text render target tryAgainText, gameOverTarget
+
+
+  reserve tween id(gameOverTween)
+
+RETURN
+
+_doGameOver:
+
+  create basic tween gameOverTween, 0, 1, 500, 300
+  set text alpha bossManText, 0
+  set text alpha defeatText, 0
+  set text alpha tryAgainText, 0
+  while is tween done(gameOverTween) = 0
+    set sprite alpha gameOverSprite, tweenVal(gameoverTween) * 255
+    sync
+  endwhile
+
+  create basic tween gameOverTween, 0, 1, 500, 0
+  set tween easing gameOverTween, 1
+  while is tween done(gameOverTween) = 0
+    position sprite danceManSprite, sprite x(danceManSprite), render height()/2 + tweenVal(gameOverTween)*200
+
+    for n = 0 to len(snips) - 1
+      set text alpha snips(n).textId, (1 - tweenVal(gameoverTween))*255
+    next
+    sync
+  endwhile
+  create basic tween gameOverTween, 0, 1, 500, 0
+
+
+
+  sad = 0
+  sadTime = 150
+  do
+    color = rgb(255, 200, 200, 180*tweenVal(gameOverTween))
+    color text bossmanText, color
+    color text defeatText, color
+    set text alpha tryAgainText, tweenVal(gameOverTween)*255
+
+    if timer() > sadTime
+      set sprite texture dancemansprite, sadDanceTextures(sad mod (len(sadDanceTextures)))
+      inc sad
+      sadTime = timer() + 150
+      set sprite flip danceManSprite rnd(2), 0
+    endif
+
+    if new left shiftkey() or new rightKey()
+      set sprite alpha gameOverSprite, 0
+      
+      GOTO _mainMenu
+    endif
+
+    sync
+  loop
+
+RETURN
