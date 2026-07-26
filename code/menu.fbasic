@@ -300,6 +300,8 @@ RETURN
 
 
 _doMidWin:
+  sfx fanfareSfx, sfx_mid_victory
+  play sfx fanfareSfx
 
   set text defeatText, "NOT TODAY"
   set text tryAgainText, "TRY AGAIN, TOMORROW"
@@ -342,6 +344,7 @@ _doMidWin:
 
     if new left shiftkey() or new rightKey()
       set sprite alpha gameOverSprite, 0
+      pause sfx fanfareSfx
       
       GOTO _mainMenu
     endif

@@ -87,7 +87,7 @@ do
 
   if (lives <= 0)
     pause sfx mainMusic
-    GOTO _doWin
+    GOTO _doMidWin
 
     ` GOTO _doGameOver
   endif
