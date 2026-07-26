@@ -1,6 +1,14 @@
 
 
 _setupNotes:
+
+  DIM noteColors(5)
+  noteColors(0) = rgb(255, 209, 179)
+  noteColors(1) = rgb(249, 255, 179)
+  noteColors(2) = rgb(245, 179, 255)
+  noteColors(3) = rgb(255, 179, 179)
+  noteColors(4) = rgb(179, 227, 255)
+
   DIM notes(20) as note
   note as note
 
@@ -18,7 +26,7 @@ _setupNotes:
   set sprite frame sid, 1
   size sprite sid, 180, 180
   rotate sprite sid, .1
-  color sprite sid, rgb(255, 209, 179)
+  color sprite sid, noteColors(0)
   
 
   reserve text id(tid)
@@ -42,11 +50,11 @@ _setupNotes:
   size sprite sid, 140, 140
   order sprite sid, -1
   rotate sprite sid, -0.08
-  color sprite sid, rgb(237, 255, 179)
+  color sprite sid, noteColors(1)
 
 
   reserve text id(tid)
-  text tid, 90, 200, 2, "COMBO"
+  text tid, 90, 200, 2, "BONUS"
   order text tid, 2
   rotate text tid, .2
   size text y tid, 40

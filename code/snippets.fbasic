@@ -28,13 +28,19 @@ _setupSnippets:
     sadDanceTextureNames$(1) = "assets/dance/Dance_huh"
 
 
-    dim happyDanceTextureNames$(6)
-    happyDanceTextureNames$(0) = "assets/dance/Dance_breakdance"
-    happyDanceTextureNames$(1) = "assets/dance/Dance_handstand_left"
-    happyDanceTextureNames$(2) = "assets/dance/Dance_headtap_left"
-    happyDanceTextureNames$(3) = "assets/dance/Dance_kick_left"
-    happyDanceTextureNames$(4) = "assets/dance/Dance_reach_left"
-    happyDanceTextureNames$(5) = "assets/dance/Dance_robot_left"
+    dim happyDanceTextureNames$(5)
+    ` happyDanceTextureNames$(0) = "assets/dance/Dance_breakdance"
+    ` happyDanceTextureNames$(1) = "assets/dance/Dance_handstand_left"
+    ` happyDanceTextureNames$(2) = "assets/dance/Dance_headtap_left"
+    ` happyDanceTextureNames$(3) = "assets/dance/Dance_kick_left"
+    ` happyDanceTextureNames$(4) = "assets/dance/Dance_reach_left"
+    ` happyDanceTextureNames$(5) = "assets/dance/Dance_robot_left"
+
+  happyDanceTextureNames$(0) = "assets/dance2/Dance_handstand"
+    happyDanceTextureNames$(1) = "assets/dance2/Dance_headphone"
+    happyDanceTextureNames$(2) = "assets/dance2/Dance_jazzhands"
+    happyDanceTextureNames$(3) = "assets/dance2/Dance_point"
+    happyDanceTextureNames$(4) = "assets/dance2/Dance_tip_toe"
 
     dim happyDanceTextures(len(happyDanceTextureNames$))
     for n = 0 to len(happyDanceTextures) - 1

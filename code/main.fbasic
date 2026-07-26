@@ -5,7 +5,6 @@ _main:
 ` setup music
 sfx 1, 1
 
-scoreTextId = reserve text id(scoreTextId)
 
 GOSUB _setupSnippets
 GOSUB _setupLanes
@@ -13,9 +12,10 @@ GOSUB _setupLines
 GOSUB _setupSnips
 GOSUB _setupMan
 GOSUB _setupScoreTexts
+GOSUB _setupNotes
+
 GOSUB _setupCode
 GOSUB _setupcountdown
-GOSUB _setupNotes
 
 hide text loadingText
 
@@ -23,13 +23,13 @@ GOSUB _setupAnimatics
 
 GOSUB _setupMenu
 
-` GOSUB _animIntro
-` GOSUB _playAnimatic
+GOSUB _animIntro
+GOSUB _playAnimatic
 
 ` GOSUB _animIntroBinSkull
 ` GOSUB _playAnimatic
 
-` GOTO _mainMenu
+GOTO _mainMenu
 
 _gamePlay:
 GOSUB _initSnips:
@@ -41,7 +41,7 @@ set sprite alpha animbackdropsprite, 0
 
 ` do the 3/2/1 timer countdown
 
-` play sfx 1
+`play sfx 1
 songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000
 pauseOffset = 0

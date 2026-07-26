@@ -11,6 +11,8 @@ loadingText = reserve text id(loadingText)
 text loadingtext, render width()/2, render height()/2, 1, "Loading"
 size text x loadingText, render width()/2
 
+scoreTextId = reserve text id(scoreTextId)
+
 ` load all the assets
 GOSUB _loadAssets
 
@@ -18,7 +20,7 @@ GOSUB _loadAssets
 ` :::: set up big game important variables.
 
 ` the bpm of the loaded song
-bpm = 125
+bpm = 160
 bps as float = 60.0 / (bpm + 0.0)
 
 ` the location where we want the user to hit

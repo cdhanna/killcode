@@ -48,7 +48,7 @@ float4 sampleColor(float2 screenUv, float2 warpedUv)
 {
     // ---- tweakables ----
     const float ditherScreenScale = 12.0;
-    const float spread4     = 0.0;
+    const float spread4     = 0.1;
     const float spread8     = 0.0;
     const float maxColorsR  = 0.0;  // 0 = off, else number of palette steps
     const float maxColorsG  = 0.0;

@@ -341,20 +341,6 @@
       "compiledAt": "2026-07-26T04:32:23.548Z"
     },
     {
-      "assetName": "crt",
-      "sourcePath": "crt.fx",
-      "sourceHash": "920a5f912983ee98f223bb997eefd6046d9045b4e30b910ee3184d2b5bd93330",
-      "format": "shader-mgfx-v10",
-      "encoderVersion": 33,
-      "width": 0,
-      "height": 0,
-      "blobPath": ".fade-cache/blobs/920a5f912983ee98f223bb997eefd6046d9045b4e30b910ee3184d2b5bd93330.shader-mgfx-v10.v33.xnb",
-      "metadata": {
-        "techniqueCount": 1
-      },
-      "compiledAt": "2026-07-26T04:40:17.612Z"
-    },
-    {
       "assetName": "assets/comp",
       "sourcePath": "assets/comp.png",
       "sourceHash": "0dd9f9cc1fb207218da0263e41b4535aabdabc45f7ff14dd06b6fb4bc1f1ad0d",
@@ -392,6 +378,75 @@
       "height": 512,
       "blobPath": ".fade-cache/blobs/dfbcb867b1492776c2e8bde3a0d66d982d18af46bf0f3b4c8296f0ee38cb57e2.auto.v33.xnb",
       "compiledAt": "2026-07-26T05:29:52.696Z"
+    },
+    {
+      "assetName": "assets/dance2/Dance_handstand",
+      "sourcePath": "assets/dance2/Dance_handstand.png",
+      "sourceHash": "ca9856969fd4e3d37fda9b12a778553268e7241fb8f3775a20c39198c8e6a84d",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/ca9856969fd4e3d37fda9b12a778553268e7241fb8f3775a20c39198c8e6a84d.auto.v33.xnb",
+      "compiledAt": "2026-07-26T06:08:41.631Z"
+    },
+    {
+      "assetName": "assets/dance2/Dance_headphone",
+      "sourcePath": "assets/dance2/Dance_headphone.png",
+      "sourceHash": "8410a3dbee35eaa867514b367d6ef1002be909150a6183b9835b475e6697b8ec",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/8410a3dbee35eaa867514b367d6ef1002be909150a6183b9835b475e6697b8ec.auto.v33.xnb",
+      "compiledAt": "2026-07-26T06:08:41.644Z"
+    },
+    {
+      "assetName": "assets/dance2/Dance_jazzhands",
+      "sourcePath": "assets/dance2/Dance_jazzhands.png",
+      "sourceHash": "82e77d7a6189dba9de3443ed8113c560eaa7823dd2b15b247c08b21237d63638",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/82e77d7a6189dba9de3443ed8113c560eaa7823dd2b15b247c08b21237d63638.auto.v33.xnb",
+      "compiledAt": "2026-07-26T06:08:41.655Z"
+    },
+    {
+      "assetName": "assets/dance2/Dance_point",
+      "sourcePath": "assets/dance2/Dance_point.png",
+      "sourceHash": "918451d197b69301ce1722aa22dce5504d3e26dfda2077e5493f79c4be641bec",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/918451d197b69301ce1722aa22dce5504d3e26dfda2077e5493f79c4be641bec.auto.v33.xnb",
+      "compiledAt": "2026-07-26T06:08:41.665Z"
+    },
+    {
+      "assetName": "assets/dance2/Dance_tip_toe",
+      "sourcePath": "assets/dance2/Dance_tip_toe.png",
+      "sourceHash": "0f8231aa637d97c27deb9da2135b795a9fb4b29ec453f33038147a50c698c686",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/0f8231aa637d97c27deb9da2135b795a9fb4b29ec453f33038147a50c698c686.auto.v33.xnb",
+      "compiledAt": "2026-07-26T06:08:41.676Z"
+    },
+    {
+      "assetName": "crt",
+      "sourcePath": "crt.fx",
+      "sourceHash": "8e9a8f433deb4b8083be100241b6e1ef5025c693a2f1d124a2441f9b6765b199",
+      "format": "shader-mgfx-v10",
+      "encoderVersion": 33,
+      "width": 0,
+      "height": 0,
+      "blobPath": ".fade-cache/blobs/8e9a8f433deb4b8083be100241b6e1ef5025c693a2f1d124a2441f9b6765b199.shader-mgfx-v10.v33.xnb",
+      "metadata": {
+        "techniqueCount": 1
+      },
+      "compiledAt": "2026-07-26T06:11:16.444Z"
     }
   ]
 }

@@ -1,6 +1,6 @@
 _loadAssets:
 
-    load sfx clip 1, "assets/songs/demo_1_fast"
+    load sfx clip 1, "assets/songs/demo5"
 
     TEX_PAPERS = reserve texture id(TEX_PAPERS)
     texture TEX_PAPERS, "assets/papers_fix"
