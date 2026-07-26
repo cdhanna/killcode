@@ -23,6 +23,9 @@ GOSUB _setupMenu
 GOSUB _animIntro
 GOSUB _playAnimatic
 
+GOSUB _animIntroBinSkull
+GOSUB _playAnimatic
+
 GOTO _mainMenu
 
 _gamePlay:
