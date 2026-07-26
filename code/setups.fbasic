@@ -71,17 +71,28 @@ dim snips(32) as snip
       textId = reserve sprite id(snips(n).textId)
       laneIndex = (n+rnd(2)) mod len(lanes),
       index = rnd(len(snippets$))
+
+      ` reserve tween id(snips(n).scaleTween)
+      fadeTween = reserve tween id(snips(n).fadeTween)
+      scaleTween = reserve tween id(snips(n).scaleTween)
+      rotateTween = reserve tween id(snips(n).rotateTween)
       `y = y,
       ` songTime# = (songTimeCounter * bps * 1) * 1000 `arbitrary easy factor
     }
     ` songTimeCounter += 1 + rnd(3)
 
     text snips(n).textId, getLaneX(snips(n).laneIndex), snips(n).y, 1, snippets$(snips(n).index)
-    size text y snips(n).textId, 50
+    resetSnip(n)
   next
   print "loaded snips"
 
 RETURN
+
+function resetSnip(n)
+    size text y snips(n).textId, 50
+    rotate text snips(n).textId, 0
+    set text alpha snips(n).textId, 255
+endfunction
 
 _initSnips:
   songTimeCounter = 3 / bps
