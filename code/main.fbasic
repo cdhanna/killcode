@@ -30,7 +30,7 @@ GOSUB _setupMenu
 ` GOSUB _animIntroBinSkull
 ` GOSUB _playAnimatic
 
-GOTO _mainMenu
+` GOTO _mainMenu
 
 _gamePlay:
 GOSUB _initSnips:
@@ -65,7 +65,11 @@ do
 
   time = timer()
   songTime = time - (songStartTime + pauseOffset)
-  
+
+  timeRemainingSeconds = (songLengthSeconds*1000) - songTime
+  timeRemainingSeconds /= 1000
+  set text timeLeftText, str$(timeRemainingSeconds)
+
   GOSUB _updateStatus
   GOSUB _updateLanes
   `312.5px/second for quarter note at 125bpm 

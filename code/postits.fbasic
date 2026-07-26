@@ -100,7 +100,29 @@ _setupNotes:
   size text y tid, 45
   color text tid, rgb(37, 37, 37, 220)
 
+  reserve sprite id(sid)
+  sprite sid, render width() - 80, 110, TEX_PAPERS
+  set sprite frame sid, 1
+  set sprite flip sid, 1, 0
+  size sprite sid, 140, 140
+  order sprite sid, -1
+  rotate sprite sid, -0.2
+  color sprite sid, noteColors(1)
 
+  reserve text id(tid)
+  text tid, render width() - 80, 70, 2, "TIME"
+  order text tid, 2
+  rotate text tid, -.3
+  size text y tid, 50
+  color text tid, rgb(37, 37, 37, 220)
+
+
+  reserve text id(timeLeftText)
+  text timeLeftText, render width() - 77, 120, 1, "150"
+  order text timeLeftText, 2
+  rotate text timeLeftText, -.2
+  size text y timeLeftText, 42
+  color text timeLeftText, rgb(37, 37, 37, 220)
 
 RETURN
 

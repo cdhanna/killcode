@@ -22,6 +22,7 @@ GOSUB _loadAssets
 ` the bpm of the loaded song
 bpm = 160
 bps as float = 60.0 / (bpm + 0.0)
+songLengthSeconds = 150
 
 ` the location where we want the user to hit
 targetY = render height() - 135
