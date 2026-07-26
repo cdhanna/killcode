@@ -19,10 +19,12 @@ _setupLanes:
       textId = reserve text id(lanes(n).textId)
       leftSpriteId = reserve sprite id(leftSpriteId)
       rightSpriteId = reserve sprite id(rightSpriteId)
+      posTween = reserve tween id(posTween)
+      scaleTween = reserve tween id(scaleTween)
     }
 
     x = getLaneX(n)
-    text lanes(n).textId, x, render height()-40, 1, laneKeys$(n)
+    text lanes(n).textId, x, laneTextY, 1, laneKeys$(n)
     enable text drop shadow lanes(n).textId, -4, -8, rgb(0,0,0)
     size text x lanes(n).textId, 50
 
@@ -33,6 +35,9 @@ _setupLanes:
     sprite lanes(n).rightSpriteId, x+140, 10 + render height()/2, 0
     size sprite lanes(n).rightSpriteId, 5, render height()-200
     color sprite lanes(n).rightSpriteId, lineColor
+
+    ` create basic tween lane.posTween, laneTextY, laneTextY - 30, 300, 0
+    ` set tween type lane.posTween, 1
 
   next
 

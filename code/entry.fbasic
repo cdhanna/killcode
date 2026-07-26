@@ -25,6 +25,8 @@ targetY = render height() - 135
 ` the band they have to enter success
 targetHeight = 100
 
+laneTextY = render height()-40
+
 ` starting score
 score = 0
 startCountdown = 3

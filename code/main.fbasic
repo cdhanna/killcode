@@ -96,8 +96,17 @@ do
   ` check for keystroke
   for n = 0 to len(lanes) - 1
     lane = lanes(n)
+
+    if any tweens running(lane.textId)
+      set text position lane.textId, text x(lane.textId), tweenVal(lane.posTween)
+    endif
+
     if new key down(lane.keyCode)
       print "hit lane " + str$(n)
+
+      create basic tween lane.posTween, laneTextY, laneTextY - 30, 300, 0
+      set tween type lane.posTween, 1
+
 
       ` find the lowest snip in the current lane
       highestY = targetY - (5*60*1000-songTime)*fallSpeed# `TODO: make 0, so only on screen things get caught
