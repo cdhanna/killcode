@@ -129,7 +129,7 @@ _playAnimatic:
 
   animStartMs = timer()
 
-  forceTimeStart = 0*1000
+  forceTimeStart = 7*1000 ` reset to zero after adding new anims
   skipDuration as float = 600
   startSkip = 0
   do
@@ -658,7 +658,7 @@ _animIntro:
   `boss
   panelLeft = x# + 150
   x = panelLeft + 50
-  y = 120
+  y = 165
   anims(11) = {
     textureId = TEX_BIZ_BOSS,
     startTimeMs = 10 * 1000
@@ -712,7 +712,7 @@ _animIntro:
 
 
   `biz man 1
-  x = panelLeft + 5
+  x = panelLeft + 25
   y = 220
   anims(13) = {
     textureId = TEX_BIZ_MAN,
@@ -769,7 +769,7 @@ _animIntro:
 
 
   `biz man 2
-  x = panelLeft + 145
+  x = panelLeft + 115
   y = 320
   anims(15) = {
     textureId = TEX_BIZ_MAN,

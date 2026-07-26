@@ -26,9 +26,9 @@ _loadAssets:
     texture TEX_BOARDROOM, "assets/animatics/boardroom2"
 
     TEX_BIZ_MAN = reserve texture id(TEX_BIZ_MAN)
-    texture TEX_BIZ_MAN, "assets/animatics/Business_man"
+    texture TEX_BIZ_MAN, "assets/animatics/Business_man2"
 
     TEX_BIZ_BOSS = reserve texture id(TEX_BIZ_BOSS)
-    texture TEX_BIZ_BOSS, "assets/animatics/Business_boss"
+    texture TEX_BIZ_BOSS, "assets/animatics/Business_boss2"
 
 RETURN
