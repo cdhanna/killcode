@@ -1,8 +1,8 @@
 _animIntroBinSkull:
   GOSUB _resetAnim
 
-  w# = 486
-  h# = 343
+  w# = 512
+  h# = 512
 
   a# = w# / h#
   y# = (render width()-200) / a#
@@ -19,7 +19,7 @@ _animIntroBinSkull:
       y = 100
     }
     startSize = {
-      x = x#
+      x = render width() - 200
       y = render height() - 200
     }
     color = rgb(0, 0, 0)
@@ -27,7 +27,7 @@ _animIntroBinSkull:
 
   ` city backdrop, panel 1 486x343
   anims(1) = {
-    textureId = TEX_NIGHTSCAPE,
+    textureId = TEX_BINARY_BACKGROUND,
     startTimeMs = 200
     lockTime = 5 * 1000
     endTimeMs = 5 * 1000
@@ -37,19 +37,20 @@ _animIntroBinSkull:
       y = 100
     }
     endPos = {
-      x = 50,
-      y = 100
+      x = 100,
+      y = 80
     }
     startSize = {
-      x = x# * 1.2
-      y = (render height()-200) * 1.2
+      x = render width() - 200
+      y = y#
     }
-    color = rgb(205, 205, 205)
+    color = rgb(255, 255, 255)
     animMaskIndex = 1 ` use the index+1
   }
 
-  ` hooded man
+ 
 
+  ` load the next image
 
   animCount = 2
 

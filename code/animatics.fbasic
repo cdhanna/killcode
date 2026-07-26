@@ -129,7 +129,7 @@ _playAnimatic:
 
   animStartMs = timer()
 
-  forceTimeStart = 7*1000 ` reset to zero after adding new anims
+  forceTimeStart = 0*1000 ` reset to zero after adding new anims
   skipDuration as float = 600
   startSkip = 0
   do

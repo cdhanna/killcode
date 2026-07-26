@@ -331,6 +331,17 @@
         "techniqueCount": 1
       },
       "compiledAt": "2026-07-26T03:08:55.806Z"
+    },
+    {
+      "assetName": "assets/animatics/Binary",
+      "sourcePath": "assets/animatics/Binary.png",
+      "sourceHash": "1dacd7ce992f73914f0c143fa4501423bbfffd82b648d9a0420a8a2c7dc9318a",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/1dacd7ce992f73914f0c143fa4501423bbfffd82b648d9a0420a8a2c7dc9318a.auto.v33.xnb",
+      "compiledAt": "2026-07-26T03:32:51.618Z"
     }
   ]
 }

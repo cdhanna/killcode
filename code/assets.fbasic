@@ -31,4 +31,7 @@ _loadAssets:
     TEX_BIZ_BOSS = reserve texture id(TEX_BIZ_BOSS)
     texture TEX_BIZ_BOSS, "assets/animatics/Business_boss2"
 
+    TEX_BINARY_BACKGROUND = reserve texture id(TEX_BINARY_BACKGROUND)
+    texture TEX_BINARY_BACKGROUND, "assets/animatics/Binary"
+
 RETURN
