@@ -364,6 +364,23 @@
       "height": 1046,
       "blobPath": ".fade-cache/blobs/0dd9f9cc1fb207218da0263e41b4535aabdabc45f7ff14dd06b6fb4bc1f1ad0d.auto.v33.xnb",
       "compiledAt": "2026-07-26T04:52:39.972Z"
+    },
+    {
+      "assetName": "assets/fonts/hand",
+      "sourcePath": "assets/fonts/hand.ttf",
+      "sourceHash": "3c8ea1968ff8ac8964f8f16447d2e3485219079361b85d84ae768359b6453f71",
+      "format": "spritefont-32",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 256,
+      "blobPath": ".fade-cache/blobs/3c8ea1968ff8ac8964f8f16447d2e3485219079361b85d84ae768359b6453f71.spritefont-32.v33.xnb",
+      "metadata": {
+        "sizePx": 32,
+        "glyphCount": 95,
+        "atlasWidth": 512,
+        "atlasHeight": 256
+      },
+      "compiledAt": "2026-07-26T05:08:25.103Z"
     }
   ]
 }

@@ -17,11 +17,12 @@ _setupLanes:
   set sprite effect gameSprite, crtEffect
 
   compSprite = reserve sprite id(compSprite)
-  sprite compSprite, 0, 0, TEX_COMP
+  sprite compSprite, -50, -50, TEX_COMP
   set sprite offset compSprite, 0, 0
   order sprite compSprite, -11
-  size sprite compSprite, render width(), render height()
-  color sprite compSprite, rgb(92, 92, 61)
+  size sprite compSprite, render width()+100, render height()+100
+  color sprite compSprite, rgb(175, 175, 117)
+  set sprite alpha compSprite, 100
 
   dim laneKeys$(4)
   laneKeys$(0) = "F"
@@ -157,44 +158,42 @@ RETURN
 
 _setupScoreTexts:
     ` create the score text
-  scoreLabelTextId = reserve text id(scoreLabelTextId)
-  text scoreLabelTextId, 10, 10, 1, "SCORE"
-  set text offset scoreLabelTextId, 0, 0
-  size text y scoreLabelTextId, 30
-
-  scoreTextId = reserve text id(scoreTextId)
-  text scoreTextId, 10, 40, 1, "0"
-  set text offset scoreTextId, 0, 0
-  size text y scoreTextId, 50
+  ` scoreLabelTextId = reserve text id(scoreLabelTextId)
+  ` text scoreLabelTextId, 10, 10, 1, "SCORE"
+  ` set text offset scoreLabelTextId, 0, 0
+  ` size text y scoreLabelTextId, 30
 
 RETURN
 
 _setupCode:
 
   ` set up the secret code
-  dim secretCode(32) as codePart
-  secretCodeSize = 12
+  dim secretCode(12) as codePart
+  secretCodeSize = 5
   pendingCodeIndex = 0
-  textX = 400
-  textY = 15
-  for n = 0 to secretCodeSize - 1
+  ` textX = 400
+  ` textY = 15
+  for n = 0 to len(secretCode) - 1
     secretCode(n) = {
       index = snips(n*2).index,
       textId = reserve text id(secretCode(n).textId)
+      spriteId = reserve sprite id(spriteId)
+      crossSpriteId = reserve sprite id(crossSpriteId)
+      transformId = reserve transform id(transformId)
     }
-    if n > 0
-      textX += get text size x(secretCode(n-1).textId) + 12
-    endif
-    text secretCode(n).textId, textX, textY, 1, snippets$(secretCode(n).index)
-    size text y secretCode(n).textId, 25
-    ` enable text gizmo secretCode(n).textId
-    set text offset secretCode(n).textId, 0, 0
-    enable text drop shadow secretCode(n).textId, -4, -4, rgb(0,0,0)
-    if textX + get text size x(secretCode(n).textId) > render width() - 10
-      textX = 400
-      textY += 35
-      set text position secretCode(n).textId, textX, textY
-    endif
+    ` if n > 0
+    `   textX += get text size x(secretCode(n-1).textId) + 12
+    ` endif
+    ` text secretCode(n).textId, textX, textY, 1, snippets$(secretCode(n).index)
+    ` size text y secretCode(n).textId, 25
+    ` ` enable text gizmo secretCode(n).textId
+    ` set text offset secretCode(n).textId, 0, 0
+    ` enable text drop shadow secretCode(n).textId, -4, -4, rgb(0,0,0)
+    ` if textX + get text size x(secretCode(n).textId) > render width() - 10
+    `   textX = 400
+    `   textY += 35
+    `   set text position secretCode(n).textId, textX, textY
+    ` endif
     ` sync
   next
 

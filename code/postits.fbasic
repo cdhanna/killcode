@@ -14,8 +14,75 @@ _setupNotes:
   set texture frame grid TEX_PAPERS, 2, 2
 
   reserve sprite id(sid)
-`  sprite sid, 200, 200, TEX_PAPERS
-`  set sprite frame sid, 1
+  sprite sid, 110, 110, TEX_PAPERS
+  set sprite frame sid, 1
+  size sprite sid, 180, 180
+  rotate sprite sid, .1
+  color sprite sid, rgb(255, 209, 179)
+  
+
+  reserve text id(tid)
+  text tid, 85, 60, 2, "SCORE"
+  order text tid, 2
+  rotate text tid, -.1
+  size text y tid, 50
+  color text tid, rgb(37, 37, 37, 180)
+  ` enable text drop shadow tid, -4, -4, rgb(0, 0, 0)
+  ` reserve sprite id(sid)
+  ` sprite sid, 200, 100, TEX_PAPERS
+  ` set sprite frame sid, 3
+  ` size sprite sid, 140, 140
+  ` rotate sprite sid, 0
+  ` color sprite sid, rgb(255, 209, 179)
+
+
+  reserve sprite id(sid)
+  sprite sid, 90, 210, TEX_PAPERS
+  set sprite frame sid, 0
+  size sprite sid, 140, 140
+  order sprite sid, -1
+  rotate sprite sid, -0.08
+  color sprite sid, rgb(237, 255, 179)
+
+
+  reserve text id(tid)
+  text tid, 90, 200, 2, "COMBO"
+  order text tid, 2
+  rotate text tid, .2
+  size text y tid, 40
+  color text tid, rgb(37, 37, 37, 180)
+
+
+  text scoreTextId, 100, 80, 1, "0"
+  set text offset scoreTextId, .5, 0
+  order text scoreTextId, 2
+  size text x scoreTextId, 100
+  color text scoreTextId, rgb(0,0,0,128)
+  enable text drop shadow scoreTextId, -2, 2, rgb(0,0,0,128)
+
+  reserve sprite id(sid)
+  sprite sid, 80, render height() - 200, TEX_PAPERS
+  set sprite frame sid, 3
+  size sprite sid, 140, 140
+  order sprite sid, -1
+  rotate sprite sid, -0.2
+  color sprite sid, rgb(255, 179, 211)
+
+  reserve text id(tid)
+  text tid, 80, render height() - 220, 2, "SECRET"
+  order text tid, 2
+  rotate text tid, -.2
+  size text y tid, 40
+  color text tid, rgb(37, 37, 37, 180)
+ 
+  reserve text id(tid)
+  text tid, 80, render height() - 190, 2, "KILLCODE"
+  order text tid, 2
+  rotate text tid, -.1
+  size text y tid, 45
+  color text tid, rgb(37, 37, 37, 220)
+
+
 
 RETURN
 
