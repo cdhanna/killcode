@@ -220,3 +220,72 @@ _setupCode:
   next
 
 RETURN
+
+_setupStatusText:
+  reserve text id(statusText)
+  text statusText, render width()/2, 30 + render height()/2, 1, "FINE"
+  set text render target statusText gamerendertarget
+  set text offset statusText, .5, .5
+  order text statusText, -2
+  size text y statusText 300
+  enable text drop shadow statusText, 0, 30, rgb(0,255, 255, 255)
+  color text statusText, rgb(128, 128, 128, 128)
+
+  reserve tween id(statusPunchTween)
+  reserve tween id(statusFadeTween)
+  reserve tween id(statusShakeTween)
+  
+
+  dim perfectStatusMessages$(3)
+  perfectStatusMessages$(0) = "PERF"
+  perfectStatusMessages$(1) = "BEST"
+  perfectStatusMessages$(2) = "FREN"
+
+  dim goodStatusMessages$(3)
+  goodStatusMessages$(0) = "OKAY"
+  goodStatusMessages$(1) = "FINE"
+  goodStatusMessages$(2) = "GOOD"
+
+  dim badStatusMessages$(3)
+  badStatusMessages$(0) = "MID"
+  badStatusMessages$(1) = "SAD"
+  badStatusMessages$(2) = "EEW"
+
+  statusCode = 0
+RETURN
+
+_punchStatus:
+  select statusCode
+    case 3
+      set text statusText, perfectStatusMessages$(rnd(len(perfectStatusMessages$)))
+      enable text drop shadow statusText, 0, 30, rgb(128, 255, 128)
+    endcase
+    case 2
+      set text statusText, goodStatusMessages$(rnd(len(goodStatusMessages$)))
+      enable text drop shadow statusText, 0, 30, rgb(128, 255, 255)
+    
+    endcase
+    case 1
+      set text statusText, badStatusMessages$(rnd(len(badStatusMessages$)))
+      enable text drop shadow statusText, 0, 30, rgb(255, 128, 64)
+    
+    endcase
+  endselect
+
+  size text y statusText, 300
+
+  create basic tween statusShakeTween, 0, 3 * statusCode, 100, 0
+  set tween type statusShakeTween, 1
+  create basic tween statusPunchTween, 280, 320, 250, 0
+  set tween easing statusPunchTween, 2
+  create basic tween statusFadeTween, 100, 0, 150, 100
+
+  set text alpha statusText, 128
+RETURN
+
+_updateStatus:
+  set screen shake amount tweenVal(statusShakeTween)
+  set screen shake bounce .5
+  size text y statusText, tweenVal(statusPunchTween)
+  set text alpha statusText, tweenVal(statusFadeTween)
+RETURN

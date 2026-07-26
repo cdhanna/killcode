@@ -13,6 +13,7 @@ GOSUB _setupSnips
 GOSUB _setupMan
 GOSUB _setupScoreTexts
 GOSUB _setupNotes
+GOSUB _setupStatusText
 
 GOSUB _setupCode
 GOSUB _setupcountdown
@@ -65,6 +66,7 @@ do
   time = timer()
   songTime = time - (songStartTime + pauseOffset)
   
+  GOSUB _updateStatus
   `312.5px/second for quarter note at 125bpm 
   ` speed = distance / time
   ` speed = 150px / .48 (.48 is 60/125 bpm)
@@ -173,8 +175,7 @@ do
 
       
       
-      print "SCORE: " + str$((1 - targetRatio#) * 100)
-      scoreAmount = ((1 - targetRatio#) * 3)
+      scoreAmount = min(3, ((1 - targetRatio#) * 4))
       
 
       if (scoreAmount > 0)
@@ -182,6 +183,9 @@ do
         set sprite texture dancemansprite, happyDanceTextures(rnd(len(happyDanceTextures)))
         combo = min(combo + 1, maxCombo)
         
+        statusCode = scoreAmount
+        GOSUB _punchStatus
+
         else
         combo = 0
         set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))

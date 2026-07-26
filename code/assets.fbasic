@@ -6,6 +6,8 @@ _loadAssets:
     texture TEX_PAPERS, "assets/papers_fix"
     TEX_COMP = reserve texture id(TEX_COMP)
     texture TEX_COMP, "assets/comp"
+    reserve texture id(TEX_LINE_GRAD)
+    texture TEX_LINE_GRAD, "assets/lineGrad"
 
 
     TEX_NIGHTSCAPE = reserve texture id(TEX_NIGHTSCAPE)
