@@ -40,4 +40,7 @@ _loadAssets:
     TEX_BINARY_BACKGROUND = reserve texture id(TEX_BINARY_BACKGROUND)
     texture TEX_BINARY_BACKGROUND, "assets/animatics/Binary"
 
+    TEX_SKULL = reserve texture id(TEX_SKULL)
+    texture TEX_SKULL, "assets/animatics/Skull"
+
 RETURN
