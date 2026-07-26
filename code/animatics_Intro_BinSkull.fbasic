@@ -25,33 +25,55 @@ _animIntroBinSkull:
     color = rgb(0, 0, 0)
   }
 
-  ` city backdrop, panel 1 486x343
   anims(1) = {
-    textureId = TEX_BINARY_BACKGROUND,
+    textureId = TEX_HOODED_MAN,
     startTimeMs = 200
     lockTime = 5 * 1000
-    endTimeMs = 5 * 1000
+    endTimeMs = 10 * 1000
 
+    order = 10
     startPos = {
-      x = 100,
-      y = 100
+      x = render width() /2,
+      y = 450
     }
     endPos = {
-      x = 100,
-      y = 80
+      x = render width() / 2,
+      y = 450
     }
     startSize = {
-      x = render width() - 200
-      y = y#
+      x = 180
+      y = 280
     }
     color = rgb(255, 255, 255)
     animMaskIndex = 1 ` use the index+1
   }
 
+    ` binary backhround 512x512
+    anims(2) = {
+      textureId = TEX_BINARY_BACKGROUND,
+      startTimeMs = 500
+      lockTime = 5 * 1000
+     endTimeMs = 10 * 1000
+        startPos = {
+        x = 100,
+        y = 100
+      }
+     endPos = {
+       x = 100,
+       y = 80
+     }
+     startSize = {
+       x = render width() - 200
+       y = y#
+     }
+     color = rgb(255, 255, 255)
+     animMaskIndex = 1 ` use the index+1
+   }
+
  
 
   ` load the next image
 
-  animCount = 2
+  animCount = 3
 
 RETURN
