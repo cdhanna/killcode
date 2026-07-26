@@ -36,6 +36,8 @@ score = 0
 startCountdown = 3
 combo = 0
 maxCombo = 10
+startingLives = 5
+lives = 0
 
 ` menu options
 isPauseMenu = 0

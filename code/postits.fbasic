@@ -124,6 +124,31 @@ _setupNotes:
   size text y timeLeftText, 42
   color text timeLeftText, rgb(37, 37, 37, 220)
 
+
+  reserve sprite id(sid)
+  sprite sid, 240, 80, TEX_PAPERS
+  set sprite frame sid, 1
+  set sprite flip sid, 1, 0
+  size sprite sid, 140, 140
+  order sprite sid, -1
+  rotate sprite sid, -0.2
+  color sprite sid, noteColors(4)
+
+  reserve text id(tid)
+  text tid, 240, 50, 2, "LIVES"
+  order text tid, 2
+  rotate text tid, .02
+  size text y tid, 50
+  color text tid, rgb(37, 37, 37, 220)
+
+  reserve text id(livesLeftText)
+  text livesLeftText, 240, 90, 1, "10"
+  order text livesLeftText, 2
+  rotate text livesLeftText, -.1
+  size text y livesLeftText, 40
+  color text livesLeftText, rgb(37, 37, 37, 220)
+
+
 RETURN
 
 

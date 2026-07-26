@@ -47,6 +47,7 @@ songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000
 pauseOffset = 0
 crtTime# = 0
+lives = startingLives
 do
 
   crtTime# += .1
@@ -69,6 +70,8 @@ do
   timeRemainingSeconds = (songLengthSeconds*1000) - songTime
   timeRemainingSeconds /= 1000
   set text timeLeftText, str$(timeRemainingSeconds)
+  set text livesLeftText, str$(lives)
+  set text comboTextId, str$(combo)
 
   GOSUB _updateStatus
   GOSUB _updateLanes
@@ -92,15 +95,25 @@ do
       set text alpha snip.textId, tweenVal(snip.fadeTween)*255
       rotate text snip.textId, tweenVal(snip.rotateTween)
       if snip.dead = 0 or any tweens running(snip.scaleTween, snip.fadeTween, snip.rotateTween) = 0
+        
+        
+        if (snip.missed)
+          lives = lives - 1
+          combo = 0
+
+        endif
+        
         songTimeCounter += 1 + rnd(2)
         snip.songTime# = (songTimeCounter * bps * 1) * 1000 
         snip.dead = 0
+        snip.missed = 1
         snip.index = rnd(len(snippets$))
         set text position snip.textId, text x(snip.textId), -100
         
         resetSnip(n)
         set text snip.textId, snippets$(snip.index)
         color text snip.textId, rgb(255, 255, 255)
+
       endif
     endif
     
@@ -190,6 +203,8 @@ do
         
         statusCode = scoreAmount
         GOSUB _punchStatus
+        snips(bestSnipIndex).missed = 0
+
 
         else
         combo = 0
@@ -200,13 +215,13 @@ do
       GOSUB _punchLaneColor
 
       score += scoreAmount
+      lives = min(startingLives, lives + scoreAmount)
       scoreAmount += combo
       set text scoreTextId, str$(score)
       size text x scoreTextId, 100
 
       set sprite flip dancemansprite, rnd(2), 0
 
-      set text comboTextId, str$(combo)
 
       color text snip.textId, rgb(targetRatio# * 255, (1 - targetRatio#) * 255, 0)
       
@@ -253,6 +268,7 @@ type snip
   textId,
   songTime#,
   dead
+  missed
   scaleTween
   fadeTween
   rotateTween
