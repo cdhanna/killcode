@@ -21,6 +21,7 @@ _setupSnippets:
     snippets$(17) = "sync"
     snippets$(18) = "72"
     snippets$(19) = "goto"
+    print "set up the snippets", len(snippets$)
 
     dim afroTextureNames$(3)
     afroTextureNames$(0) = "assets/dance2/Afro1"

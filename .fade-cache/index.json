@@ -535,6 +535,17 @@
       "height": 512,
       "blobPath": ".fade-cache/blobs/a42c3cf3d8611e5485ebcbe17d4654b87bbba09e91dddcb4ea9d89cea3fc0676.auto.v33.xnb",
       "compiledAt": "2026-07-26T12:25:27.342Z"
+    },
+    {
+      "assetName": "assets/animatics/Close_up",
+      "sourcePath": "assets/animatics/Close_up.png",
+      "sourceHash": "0e735836641c61f7cdb55db1ec2ce5b2bed699541008bb852984e52fcb8f2e1b",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/0e735836641c61f7cdb55db1ec2ce5b2bed699541008bb852984e52fcb8f2e1b.auto.v33.xnb",
+      "compiledAt": "2026-07-26T15:05:20.042Z"
     }
   ]
 }

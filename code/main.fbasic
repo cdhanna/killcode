@@ -23,6 +23,8 @@ GOSUB _setupStatusText
 GOSUB _setupGameOver
 GOSUB _setupVfx
 
+GOSUB _setupCode
+GOSUB _setupcountdown
 
 hide text loadingText
 
@@ -30,12 +32,10 @@ GOSUB _setupAnimatics
 
 GOSUB _setupMenu
 
-GOSUB _fullAnimIntro
-
-GOSUB _setupCode
-GOSUB _setupcountdown
 
 
+
+` GOSUB _fullAnimIntro
 ` GOSUB _animIntro
 ` GOSUB _playAnimatic
 

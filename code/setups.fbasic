@@ -265,7 +265,8 @@ _applySadAfro:
   set sprite flip dancemansprite, isFlip, 0
   set sprite flip afroSprite, isFlip, 0
 
-  sadIndex = rnd(len(sadDanceTextures))
+  sadIndex = 0`rnd(len(sadDanceTextures))
+  print "sad dance textures", len(sadDanceTextures)
   set sprite texture dancemansprite, sadDanceTextures(sadIndex)
 
   position sprite afroSprite, sprite x(danceManSprite) + sadAfros(sadIndex).x*flipSign, sprite y(danceManSprite) + sadAfros(sadIndex).y
@@ -293,7 +294,7 @@ _setupCode:
   ` textY = 15
   for n = 0 to len(secretCode) - 1
     secretCode(n) = {
-      index = snips(n*2).index,
+      index = 1,
       textId = reserve text id(secretCode(n).textId)
       spriteId = reserve sprite id(spriteId)
       crossSpriteId = reserve sprite id(crossSpriteId)
@@ -319,6 +320,8 @@ _setupCode:
     ` if n > 0  
     `   textX += get text size x(secretCode(n-1).textId) + 12
     ` endif
+    wtf = secretCode(n).textId
+    print "wtf", wtf, n, len(snippets$), len(secretCode)
     text secretCode(n).textId, sprite x(sid), sprite y(sid), 1, snippets$(secretCode(n).index)
     size text y secretCode(n).textId, 25
     color text secretCode(n).textId, rgb(255, 255, 255, 200)

@@ -15,6 +15,25 @@ _loadAssets:
 
     reserve sfx clip id(SFX_INTRO_4)
     load sfx clip SFX_INTRO_4, "assets/songs/intro_4"
+    reserve sfx clip id(SFX_INTRO_5)
+    load sfx clip SFX_INTRO_5, "assets/songs/intro_5"
+
+    reserve sfx clip id(SFX_INTRO_6)
+    load sfx clip SFX_INTRO_6, "assets/songs/intro_6"
+
+    reserve sfx clip id(SFX_INTRO_7)
+    load sfx clip SFX_INTRO_7, "assets/songs/intro_7"
+
+    reserve sfx clip id(SFX_INTRO_8)
+    load sfx clip SFX_INTRO_8, "assets/songs/intro_8"
+
+    reserve sfx clip id(SFX_INTRO_9)
+    load sfx clip SFX_INTRO_9, "assets/songs/intro_9"
+
+    reserve sfx clip id(SFX_INTRO_10)
+    load sfx clip SFX_INTRO_10, "assets/songs/intro_10"
+    reserve sfx clip id(SFX_INTRO_11)
+    load sfx clip SFX_INTRO_11, "assets/songs/intro_11"
 
 
     reserve sfx clip id(SFX_OOPS)
@@ -84,6 +103,9 @@ _loadAssets:
 
     TEX_RUNNING_BOY = reserve texture id(TEX_RUNNING_BOY)
     texture TEX_RUNNING_BOY, "assets/animatics/Running_boy"
+   TEX_CLOSE_UP = reserve texture id(TEX_CLOSE_UP)
+    texture TEX_CLOSE_UP, "assets/animatics/Close_up"
+
 
 
     TEX_MONSTER_1 = reserve texture id(TEX_MONSTER_1)
