@@ -30,7 +30,7 @@ GOSUB _setupMenu
 ` GOSUB _animIntroBinSkull
 ` GOSUB _playAnimatic
 
-` GOTO _mainMenu
+GOTO _mainMenu
 
 _gamePlay:
 GOSUB _initSnips:
@@ -42,7 +42,7 @@ set sprite alpha animbackdropsprite, 0
 
 ` do the 3/2/1 timer countdown
 
-`play sfx 1
+` play sfx 1
 songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000
 pauseOffset = 0
@@ -67,6 +67,7 @@ do
   songTime = time - (songStartTime + pauseOffset)
   
   GOSUB _updateStatus
+  GOSUB _updateLanes
   `312.5px/second for quarter note at 125bpm 
   ` speed = distance / time
   ` speed = 150px / .48 (.48 is 60/125 bpm)
@@ -116,7 +117,7 @@ do
 
     if new key down(lane.keyCode)
       print "hit lane " + str$(n)
-
+      hitLaneIndex = n
       create basic tween lane.posTween, laneTextY, laneTextY - 30, 300, 0
       set tween type lane.posTween, 1
 
@@ -188,15 +189,18 @@ do
 
         else
         combo = 0
+        statusCode = 0
         set sprite texture dancemansprite, sadDanceTextures(rnd(len(sadDanceTextures)))
 
       endif
+      GOSUB _punchLaneColor
+
       score += scoreAmount
       scoreAmount += combo
       set text scoreTextId, str$(score)
       size text x scoreTextId, 100
 
-      set sprite flip dancemansprite, rnd(1), 0
+      set sprite flip dancemansprite, rnd(2), 0
 
       set text comboTextId, str$(combo)
 
@@ -226,6 +230,10 @@ type lane
   leftSpriteId, rightSpriteId
   posTween
   scaleTween
+  leftGradSprite, rightGradSprite, lowGradSprite, topGradSprite
+  fillSprite
+  colorLerpTween
+  fillLerpTween
 endtype
 
 type codePart

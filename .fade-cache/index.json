@@ -447,6 +447,39 @@
         "techniqueCount": 1
       },
       "compiledAt": "2026-07-26T06:11:16.444Z"
+    },
+    {
+      "assetName": "assets/lineGrad",
+      "sourcePath": "assets/lineGrad.png",
+      "sourceHash": "fcaa5656587b8ba3db778ab953d1daf2a0b02359add7b8ce27416029d9ea2425",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 64,
+      "height": 1,
+      "blobPath": ".fade-cache/blobs/fcaa5656587b8ba3db778ab953d1daf2a0b02359add7b8ce27416029d9ea2425.auto.v33.xnb",
+      "compiledAt": "2026-07-26T07:33:43.866Z"
+    },
+    {
+      "assetName": "assets/dance2/Dance_sad1",
+      "sourcePath": "assets/dance2/Dance_sad1.png",
+      "sourceHash": "b83737a11ad73b599a8cd52ee2f00678832687c6440331d53fa8efd16cde4aed",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/b83737a11ad73b599a8cd52ee2f00678832687c6440331d53fa8efd16cde4aed.auto.v33.xnb",
+      "compiledAt": "2026-07-26T08:08:09.133Z"
+    },
+    {
+      "assetName": "assets/dance2/Dance_sad2",
+      "sourcePath": "assets/dance2/Dance_sad2.png",
+      "sourceHash": "6aea3f3b4ba3a18bd5cc4a1a85a33ebe0e56306ae949b90ad90a5454735df117",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/6aea3f3b4ba3a18bd5cc4a1a85a33ebe0e56306ae949b90ad90a5454735df117.auto.v33.xnb",
+      "compiledAt": "2026-07-26T08:08:09.144Z"
     }
   ]
 }

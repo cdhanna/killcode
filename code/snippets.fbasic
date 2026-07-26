@@ -24,8 +24,8 @@ _setupSnippets:
 
 
     dim sadDanceTextureNames$(2)
-    sadDanceTextureNames$(0) = "assets/dance/Dance_fail"
-    sadDanceTextureNames$(1) = "assets/dance/Dance_huh"
+    sadDanceTextureNames$(0) = "assets/dance2/Dance_sad1"
+    sadDanceTextureNames$(1) = "assets/dance2/Dance_sad2"
 
 
     dim happyDanceTextureNames$(5)

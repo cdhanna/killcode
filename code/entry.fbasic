@@ -39,6 +39,9 @@ maxCombo = 10
 ` menu options
 isPauseMenu = 0
 
+laneFadeAmount = 15
+hitLaneIndex = 0
+
 ORDER_ANIM = 100
 ORDER_MENU = 200
 

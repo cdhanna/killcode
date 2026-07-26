@@ -45,6 +45,13 @@ _setupLanes:
       posTween = reserve tween id(posTween)
       scaleTween = reserve tween id(scaleTween)
     }
+    reserve sprite id(lanes(n).leftGradSprite)
+    reserve sprite id(lanes(n).rightGradSprite)
+    reserve sprite id(lanes(n).topGradSprite)
+    reserve sprite id(lanes(n).lowGradSprite)
+    reserve sprite id(lanes(n).fillSprite)
+    reserve tween id(lanes(n).fillLerpTween)
+    reserve tween id(lanes(n).colorLerpTween)
 
     x = getLaneX(n)
     text lanes(n).textId, x, laneTextY, 1, laneKeys$(n)
@@ -52,22 +59,68 @@ _setupLanes:
     size text x lanes(n).textId, 50
     set text render target lanes(n).textId, gameRenderTarget
 
+    sprite lanes(n).fillSprite, x, 10 + render height()/2, 0
+    size sprite lanes(n).fillSprite, 140*2, render height()-200
+    color sprite lanes(n).fillSprite, lineColor
+    set sprite render target lanes(n).fillSprite, gameRenderTarget
+    order sprite lanes(n).fillSprite, -1
+    set sprite alpha lanes(n).fillSprite, 0
+
+
     sprite lanes(n).leftSpriteId, x-140, 10 + render height()/2, 0
     size sprite lanes(n).leftSpriteId, 5, render height()-200
     color sprite lanes(n).leftspriteid, lineColor
     set sprite render target lanes(n).leftspriteid, gameRenderTarget
 
+    sprite lanes(n).leftGradSprite, x-140, 10 + render height()/2, TEX_LINE_GRAD
+    set sprite offset lanes(n).leftGradSprite, 0, .5
+    size sprite lanes(n).leftGradSprite, 32, render height() - 200
+    set sprite render target lanes(n).leftGradSprite, gameRenderTarget
+    set sprite alpha lanes(n).leftGradSprite, laneFadeAmount
 
     sprite lanes(n).rightSpriteId, x+140, 10 + render height()/2, 0
     size sprite lanes(n).rightSpriteId, 5, render height()-200
     color sprite lanes(n).rightSpriteId, lineColor
     set sprite render target lanes(n).rightSpriteId, gameRenderTarget
 
+    sprite lanes(n).rightGradSprite, x+140 - 32, 10 + render height()/2, TEX_LINE_GRAD
+    set sprite offset lanes(n).rightGradSprite, 0, .5
+    set sprite flip lanes(n).rightGradSprite, 1, 0
+    size sprite lanes(n).rightGradSprite, 32, render height() - 200
+    set sprite render target lanes(n).rightGradSprite, gameRenderTarget
+    set sprite alpha lanes(n).rightGradSprite, laneFadeAmount
+
+
+    sprite lanes(n).lowGradSprite, x, 100, TEX_LINE_GRAD
+    set sprite offset lanes(n).lowGradSprite, 0, .5
+    rotate sprite lanes(n).lowGradSprite, 1.57
+    size sprite lanes(n).lowGradSprite, 32, 140*2
+    set sprite render target lanes(n).lowGradSprite, gameRenderTarget
+    set sprite alpha lanes(n).lowGradSprite, laneFadeAmount
+
+
+    sprite lanes(n).topGradSprite, x, render height() - 90, TEX_LINE_GRAD
+    set sprite offset lanes(n).topGradSprite, 0, .5
+    rotate sprite lanes(n).topGradSprite, -1.57
+    size sprite lanes(n).topGradSprite, 32, 140*2
+    set sprite render target lanes(n).topGradSprite, gameRenderTarget
+    set sprite alpha lanes(n).topGradSprite, laneFadeAmount
+
     ` create basic tween lane.posTween, laneTextY, laneTextY - 30, 300, 0
     ` set tween type lane.posTween, 1
 
   next
 
+RETURN
+
+_updateLanes:
+  for n = 0 to len(lanes) - 1
+    set sprite alpha lanes(n).topGradSprite, tweenVal(lanes(n).colorLerpTween)
+    set sprite alpha lanes(n).lowGradSprite, tweenVal(lanes(n).colorLerpTween)
+    set sprite alpha lanes(n).leftGradSprite, tweenVal(lanes(n).colorLerpTween)
+    set sprite alpha lanes(n).rightGradSprite, tweenVal(lanes(n).colorLerpTween)
+    set sprite alpha lanes(n).fillSprite, tweenVal(lanes(n).fillLerpTween)
+  next
 RETURN
 
 _setupLines:
@@ -235,6 +288,21 @@ _setupStatusText:
   reserve tween id(statusFadeTween)
   reserve tween id(statusShakeTween)
   
+  dim statusColors(4)
+  statusColors(3) = rgb(128, 255, 128)
+  statusColors(2) = rgb(128, 255, 255)
+  statusColors(1) = rgb(255, 128, 64)
+  statusColors(0) = rgb(255, 0, 0)
+
+  dim rainbowColors(8)
+  rainbowColors(0) = rgb(255, 74, 74)
+  rainbowColors(1) = rgb(255, 155, 74)
+  rainbowColors(2) = rgb(249, 255, 74)
+  rainbowColors(3) = rgb(128, 255, 74)
+  rainbowColors(4) = rgb(74, 255, 207)
+  rainbowColors(5) = rgb(74, 101, 255)
+  rainbowColors(6) = rgb(210, 74, 255)
+  rainbowColors(7) = rgb(255, 74, 225)
 
   dim perfectStatusMessages$(3)
   perfectStatusMessages$(0) = "PERF"
@@ -254,20 +322,52 @@ _setupStatusText:
   statusCode = 0
 RETURN
 
+_punchLaneColor:
+  create basic tween lanes(hitLaneIndex).colorLerpTween, laneFadeAmount, 80, 200, 0
+  set tween type lanes(hitLaneIndex).colorLerpTween, 1
+
+  if statusCode
+    create basic tween lanes(hitLaneIndex).fillLerpTween, 0, 60, 200, 0
+  
+    color = rainbowColors(rnd(len(rainbowColors)))
+
+    color sprite lanes(hitLaneIndex).fillSprite, color
+    color sprite lanes(hitLaneIndex).leftGradSprite, color
+    color sprite lanes(hitLaneIndex).topGradSprite, color
+    color sprite lanes(hitLaneIndex).rightGradSprite, color
+    color sprite lanes(hitLaneIndex).lowGradSprite, color
+
+
+
+    else 
+    create basic tween lanes(hitLaneIndex).fillLerpTween, 0, 0, 200, 0
+
+    color = rgb(100,100,100)
+
+    color sprite lanes(hitLaneIndex).fillSprite, color
+    color sprite lanes(hitLaneIndex).leftGradSprite, color
+    color sprite lanes(hitLaneIndex).topGradSprite, color
+    color sprite lanes(hitLaneIndex).rightGradSprite, color
+    color sprite lanes(hitLaneIndex).lowGradSprite, color
+  endif
+  set tween type lanes(hitLaneIndex).fillLerpTween, 1
+
+RETURN
+
 _punchStatus:
   select statusCode
     case 3
       set text statusText, perfectStatusMessages$(rnd(len(perfectStatusMessages$)))
-      enable text drop shadow statusText, 0, 30, rgb(128, 255, 128)
+      enable text drop shadow statusText, 0, 30, statusColors(3)
     endcase
     case 2
       set text statusText, goodStatusMessages$(rnd(len(goodStatusMessages$)))
-      enable text drop shadow statusText, 0, 30, rgb(128, 255, 255)
+      enable text drop shadow statusText, 0, 30, statusColors(2)
     
     endcase
     case 1
       set text statusText, badStatusMessages$(rnd(len(badStatusMessages$)))
-      enable text drop shadow statusText, 0, 30, rgb(255, 128, 64)
+      enable text drop shadow statusText, 0, 30, statusColors(1)
     
     endcase
   endselect
