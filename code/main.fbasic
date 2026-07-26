@@ -20,10 +20,10 @@ GOSUB _setupAnimatics
 
 GOSUB _setupMenu
 
-` GOSUB _animIntro
-` GOSUB _playAnimatic
+GOSUB _animIntro
+GOSUB _playAnimatic
 
-` GOTO _mainMenu
+GOTO _mainMenu
 
 _gamePlay:
 GOSUB _initSnips:

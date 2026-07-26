@@ -712,11 +712,11 @@ _animIntro:
 
 
   `biz man 1
-  x = panelLeft + 25
+  x = panelLeft + 30
   y = 220
   anims(13) = {
     textureId = TEX_BIZ_MAN,
-    startTimeMs = 1000 + 10 * 1000
+    startTimeMs = 1200 + 10 * 1000
     fadeInTimeMs = 500
 
     endTimeMs = 15 * 1000
@@ -773,7 +773,7 @@ _animIntro:
   y = 320
   anims(15) = {
     textureId = TEX_BIZ_MAN,
-    startTimeMs = 2000 + 10 * 1000
+    startTimeMs = 1800 + 10 * 1000
     fadeInTimeMs = 500
 
     endTimeMs = 15 * 1000
@@ -794,7 +794,31 @@ _animIntro:
     animMaskIndex = 11 ` use the index+1
   }
 
+  `biz man 3
+    x = panelLeft + 5
+    y = 420
+    anims(16) = {
+      textureId = TEX_BIZ_MAN,
+      startTimeMs = 2400 + 10 * 1000
+      fadeInTimeMs = 500
 
-  animCount = 16
+      endTimeMs = 15 * 1000
+      startPos = {
+        x = x
+        y = y
+      }
+      endPos = {
+        x = x 
+        y = y + 50
+      }
+      order = 11
+      startSize = {
+        x = 128 * 1.4,
+        y = 178 * 1.2
+      }
+      animMaskIndex = 11 ` use the index+1
+    }
+
+  animCount = 17
 
 RETURN
