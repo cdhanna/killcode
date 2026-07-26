@@ -240,6 +240,13 @@ RETURN
 
 _doGameOver:
 
+  set text defeatText, "DEFEAT"
+  set text tryAgainText, "TRY AGAIN"
+  set text bossmanText, "BOSSMAN SAYS 'YOU ARE FIRED'"
+  enable text drop shadow tryAgainText, 0, 10, rgb(128, 0, 0)
+  size text x defeatText, render width() - 200
+
+
   create basic tween gameOverTween, 0, 1, 500, 300
   set text alpha bossManText, 0
   set text alpha defeatText, 0
@@ -277,6 +284,58 @@ _doGameOver:
       sadTime = timer() + 150
       set sprite flip danceManSprite rnd(2), 0
     endif
+
+    if new left shiftkey() or new rightKey()
+      set sprite alpha gameOverSprite, 0
+      
+      GOTO _mainMenu
+    endif
+
+    sync
+  loop
+
+RETURN
+
+
+_doMidWin:
+
+  set text defeatText, "NOT TODAY"
+  set text tryAgainText, "TRY AGAIN, TOMORROW"
+  set text bossmanText, "YOU DID NOT ENTER THE KILLCODE"
+  enable text drop shadow tryAgainText, 0, 10, rgb(128, 128, 0)
+  size text x defeatText, render width() - 200
+
+
+  create basic tween gameOverTween, 0, 1, 500, 300
+  set text alpha bossManText, 0
+  set text alpha defeatText, 0
+  set text alpha tryAgainText, 0
+  while is tween done(gameOverTween) = 0
+    set sprite alpha gameOverSprite, tweenVal(gameoverTween) * 255
+    sync
+  endwhile
+
+  create basic tween gameOverTween, 0, 1, 500, 0
+  set tween easing gameOverTween, 1
+  while is tween done(gameOverTween) = 0
+    position sprite danceManSprite, sprite x(danceManSprite), render height()/2 + tweenVal(gameOverTween)*600
+
+    for n = 0 to len(snips) - 1
+      set text alpha snips(n).textId, (1 - tweenVal(gameoverTween))*255
+    next
+    sync
+  endwhile
+  create basic tween gameOverTween, 0, 1, 500, 0
+
+
+
+  sad = 0
+  sadTime = 150
+  do
+    color = rgb(240, 255, 200, 180*tweenVal(gameOverTween))
+    color text bossmanText, color
+    color text defeatText, color
+    set text alpha tryAgainText, tweenVal(gameOverTween)*255
 
     if new left shiftkey() or new rightKey()
       set sprite alpha gameOverSprite, 0

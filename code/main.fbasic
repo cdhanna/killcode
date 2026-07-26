@@ -82,6 +82,9 @@ do
   if (lives <= 0)
     GOTO _doGameOver
   endif
+  if (timeRemainingSeconds <= 0)
+    GOTO _midWin
+  endif
 
   `312.5px/second for quarter note at 125bpm 
   ` speed = distance / time
