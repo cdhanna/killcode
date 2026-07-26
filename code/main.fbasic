@@ -20,8 +20,8 @@ GOSUB _setupAnimatics
 
 GOSUB _setupMenu
 
-GOSUB _animIntro
-GOSUB _playAnimatic
+` GOSUB _animIntro
+` GOSUB _playAnimatic
 
 GOSUB _animIntroBinSkull
 GOSUB _playAnimatic
@@ -34,7 +34,7 @@ GOSUB _initSnips:
 
 set sprite alpha animbackdropsprite, 0
 
-GOSUB _doCountDown
+` GOSUB _doCountDown
 
 ` do the 3/2/1 timer countdown
 
@@ -116,6 +116,10 @@ do
       set tween type lane.posTween, 1
 
 
+      ` set screen shake amount 4.0
+      ` set screen shake bounce 1
+
+
       ` find the lowest snip in the current lane
       highestY = targetY - (5*60*1000-songTime)*fallSpeed# `TODO: make 0, so only on screen things get caught
       bestSnipIndex = -1
@@ -149,6 +153,7 @@ do
 
       ` is this a special code? 
       if left shiftKey()
+
         if pendingCodeIndex < secretCodeSize
           if secretCode(pendingCodeIndex).index = snip.index
             if targetRatio# < .5

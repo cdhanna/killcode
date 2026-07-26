@@ -1,0 +1,22 @@
+
+
+_setupNotes:
+  DIM notes(20) as note
+  note as note
+
+  for n = 0 to len(notes)-1
+    notes(n) = {
+      spriteId = reserve sprite id(spriteId)
+      transformId = reserve transform id(transformId)
+    }
+  next
+
+RETURN
+
+
+
+type note
+  spriteId
+  transformId
+
+endtype
