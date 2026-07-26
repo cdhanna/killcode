@@ -33,6 +33,8 @@ laneTextY = render height()-40
 ` starting score
 score = 0
 startCountdown = 3
+combo = 0
+maxCombo = 10
 
 ` menu options
 isPauseMenu = 0

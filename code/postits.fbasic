@@ -60,6 +60,16 @@ _setupNotes:
   size text y tid, 40
   color text tid, rgb(37, 37, 37, 180)
 
+  reserve text id(comboTextId)
+
+  text comboTextId, 90, 220, 1, "0"
+  set text offset comboTextId, .5, 0
+  order text comboTextId, 2
+  size text x comboTextId, 40
+  rotate text comboTextId, .3
+  color text comboTextId, rgb(0,0,0,128)
+  enable text drop shadow comboTextId, -2, 2, rgb(0,0,0,128)
+
 
   text scoreTextId, 100, 80, 1, "0"
   set text offset scoreTextId, .5, 0
