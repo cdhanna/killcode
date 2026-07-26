@@ -381,6 +381,17 @@
         "atlasHeight": 256
       },
       "compiledAt": "2026-07-26T05:08:25.103Z"
+    },
+    {
+      "assetName": "assets/animatics/Skull",
+      "sourcePath": "assets/animatics/Skull.png",
+      "sourceHash": "dfbcb867b1492776c2e8bde3a0d66d982d18af46bf0f3b4c8296f0ee38cb57e2",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/dfbcb867b1492776c2e8bde3a0d66d982d18af46bf0f3b4c8296f0ee38cb57e2.auto.v33.xnb",
+      "compiledAt": "2026-07-26T05:29:52.696Z"
     }
   ]
 }

@@ -169,6 +169,7 @@ _setupCode:
 
   ` set up the secret code
   dim secretCode(12) as codePart
+  codePart as codePart
   secretCodeSize = 5
   pendingCodeIndex = 0
   ` textX = 400
@@ -181,7 +182,16 @@ _setupCode:
       crossSpriteId = reserve sprite id(crossSpriteId)
       transformId = reserve transform id(transformId)
     }
-    ` if n > 0
+
+    codePart = secretCode(n)
+    sprite codePart.spriteId, 40 + 120*n + rnd(20), render height() - 100, TEX_PAPERS
+    set sprite frame codePart.spriteId, rnd(4)
+    
+    
+    size sprite codePart.spriteId, 70, 70
+    color sprite codePart.spriteId, rgb(255, 0, 0)
+    
+    ` if n > 0  
     `   textX += get text size x(secretCode(n-1).textId) + 12
     ` endif
     ` text secretCode(n).textId, textX, textY, 1, snippets$(secretCode(n).index)
