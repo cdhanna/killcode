@@ -11,6 +11,9 @@ _loadAssets:
     reserve sfx clip id(SFX_VICTORY)
     load sfx clip SFX_VICTORY, "assets/songs/victory"
 
+    reserve sfx clip id(SFX_THUNDER)
+    load sfx clip SFX_THUNDER, "assets/animatics/sfx/thunder"
+
     TEX_PAPERS = reserve texture id(TEX_PAPERS)
     texture TEX_PAPERS, "assets/papers_fix"
     TEX_COMP = reserve texture id(TEX_COMP)

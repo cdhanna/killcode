@@ -52,6 +52,11 @@ _setupAnimatics:
     reserve sprite id(animSpriteIds(n))
   next
 
+  dim animSfxIds(MAX_ANIM_COUNT)
+  for n = 0 to MAX_ANIM_COUNT - 1
+    reserve sfx id(animSfxIds(n))
+  next
+
   ` reserve some panel textures
   ` global MAX_PANEL_COUNT = 10
   ` DIM panels(MAX_PANEL_COUNT)
@@ -85,6 +90,14 @@ _playAnimatic:
 
     anim.pos = anim.startPos
     anim.size = anim.startSize
+
+    anim.volume = anim.startVolume
+    anim.pitch = anim.startPitch
+    anim.pan = anim.startPan
+
+    if anim.sfxClipId
+      sfx animSfxIds(n), anim.sfxClipId
+    endif
 
     sprite animSpriteIds(n), anim.pos.x, anim.pos.y, anim.textureId
     set sprite offset animSpriteIds(n), 0, 0
@@ -122,6 +135,28 @@ _playAnimatic:
     endif
     if anim.fadeInTimeMs <= 0
       anim.fadeInTimeMs = 100
+    endif
+
+    if anim.startVolume =0
+      anim.startVolume = 1
+    endif
+    if anim.endVolume=0
+      anim.endVolume = anim.startVolume
+
+    endif
+
+     if anim.startPitch =0
+      anim.startPitch = 1
+    endif
+    if anim.endPitch =0
+      anim.endPitch = anim.startPitch
+    endif
+
+     if anim.startPan=0
+      anim.startPan = 1
+    endif
+    if anim.endPan=0
+      anim.endPan = anim.startPan
     endif
     anims(n) = anim
   next
@@ -178,9 +213,19 @@ _playAnimatic:
         set sprite alpha animSpriteIds(n), fadeOutRatio# * 255
       endif
 
+      if animTime > anim.sfxDelayMs and anim.sfxClipId and skipRatio# < 1
+        print "I WAN TTO PLAY", animSfxIds(n), anim.sfxClipId, anim.startVolume, anim.endVolume
+        play sfx animSfxIds(n)
+        anim.sfxCliPId = 0
+
+      endif
+
       animRatio# = max(0, min(1, 1 - ((lockTime - animTime + 0.0) / (lockTime - fadeInTime)))) 
       ` print "anim ratio", animRatio#
 
+      set sfx volume animSfxIds(n), anim.startVolume + animRatio# * (anim.endVolume - anim.startVolume)
+      ` set sfx pitch animSfxIds(n), anim.startPitch + animRatio# * (anim.endPitch - anim.startPitch)
+      ` set sfx pan animSfxIds(n), anim.startPan + animRatio# * (anim.endPan - anim.startPan)
 
       if anim.endPos.x <> 0 
         anim.pos.x = anim.startPos.x + animRatio# * (anim.endPos.x - anim.startPos.x)
@@ -270,6 +315,19 @@ type anim
   pos as iVec
   size as iVec
 
+  sfxClipId
+  sfxDelayMs
+  volume as float
+  startVolume as float
+  endVolume as float
+  pan as float
+  startPan as float
+  endPan as float
+  pitch as float
+  startPitch as float
+  endPitch as float
+
+
   `[OPTIONAL] 
   fadeInTimeMs as float
 
@@ -292,6 +350,7 @@ _resetAnim:
   for n = 0 to MAX_ANIM_COUNT - 1
     anim = anims(n)
     ` anim.color = rgb(255, 255, 255)
+    
     anims(n) = anim
   next
 RETURN
@@ -617,6 +676,13 @@ _animIntro:
   }
   ` white flash overrides monster right
   anims(6) = {
+
+    sfxClipId = SFX_THUNDER,
+    sfxDelayMs = -500
+
+    startVolume = .6
+    startPan = -1
+    endPan = 1
     textureId = 0,
     startTimeMs = (5 * 1000)
     fadeInTimeMs = 50

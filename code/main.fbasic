@@ -3,7 +3,8 @@ _main:
 
 
 ` setup music
-sfx 1, 1
+reserve sfx id(mainMusic)
+sfx mainMusic, 1
 
 reserve sfx id(impactSfx)
 set sfx volume impactSfx, .3
@@ -30,8 +31,8 @@ GOSUB _setupAnimatics
 
 GOSUB _setupMenu
 
-` GOSUB _animIntro
-` GOSUB _playAnimatic
+GOSUB _animIntro
+GOSUB _playAnimatic
 
 ` GOSUB _animIntroBinSkull
 ` GOSUB _playAnimatic
@@ -49,7 +50,7 @@ set sprite alpha animbackdropsprite, 0
 
 ` do the 3/2/1 timer countdown
 
-play sfx 1
+play sfx mainMusic
 songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000
 pauseOffset = 0
@@ -63,12 +64,12 @@ do
   if new key down(27) `ESCAPE KEY
     
     isPauseMenu = 1
-    pause sfx 1
+    pause sfx mainMusic
     pausedAt = timer()
     GOSUB _mainmenu
     GOSUB _docountdown
     pauseOffset += timer() - pausedAt
-    resume sfx 1
+    resume sfx mainMusic
   endif
 
   time = timer()
@@ -85,7 +86,7 @@ do
 
 
   if (lives <= 0)
-    pause sfx 1
+    pause sfx mainMusic
     GOTO _doWin
 
     ` GOTO _doGameOver
