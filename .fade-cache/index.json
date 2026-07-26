@@ -19,149 +19,6 @@
       "compiledAt": "2026-07-23T21:17:00.151Z"
     },
     {
-      "assetName": "assets/dance/Dance_breakdance",
-      "sourcePath": "assets/dance/Dance_breakdance.png",
-      "sourceHash": "473304519a326aa0442575f01b1c4b862f0d3f928c67d2ef178390051f01a0d3",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/473304519a326aa0442575f01b1c4b862f0d3f928c67d2ef178390051f01a0d3.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.198Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_fail",
-      "sourcePath": "assets/dance/Dance_fail.png",
-      "sourceHash": "9cefe4c719d107f41aa65a302931b5a63a47db4d1c08a2bfb89396bc2ca63fe0",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/9cefe4c719d107f41aa65a302931b5a63a47db4d1c08a2bfb89396bc2ca63fe0.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.211Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_handstand_Right",
-      "sourcePath": "assets/dance/Dance_handstand_Right.png",
-      "sourceHash": "e21294ff6fada9328a5f64c654c5c8dc600c317797861880c7851c4eb0280109",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/e21294ff6fada9328a5f64c654c5c8dc600c317797861880c7851c4eb0280109.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.221Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_handstand_left",
-      "sourcePath": "assets/dance/Dance_handstand_left.png",
-      "sourceHash": "5a4f6a23efe2580477a484ff796effb2227255a5fc568b020abdb53364055994",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/5a4f6a23efe2580477a484ff796effb2227255a5fc568b020abdb53364055994.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.231Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_headtap_left",
-      "sourcePath": "assets/dance/Dance_headtap_left.png",
-      "sourceHash": "475ad3034baf9e958620db9d1d87d3c1fa07704d6cef92030dd42093ce3019ff",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/475ad3034baf9e958620db9d1d87d3c1fa07704d6cef92030dd42093ce3019ff.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.242Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_headtap_right",
-      "sourcePath": "assets/dance/Dance_headtap_right.png",
-      "sourceHash": "3e9996885be38d43958e2e68929562657b18c424268bfcdf6762ca4cefd9625e",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/3e9996885be38d43958e2e68929562657b18c424268bfcdf6762ca4cefd9625e.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.254Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_huh",
-      "sourcePath": "assets/dance/Dance_huh.png",
-      "sourceHash": "eab54d351fc62af85f4611d120c7a965f6c4669ffe73a41c715c23de691b0781",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/eab54d351fc62af85f4611d120c7a965f6c4669ffe73a41c715c23de691b0781.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.266Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_kick_left",
-      "sourcePath": "assets/dance/Dance_kick_left.png",
-      "sourceHash": "ac1c7764275d8dde6e3e969f9f46810199d11f8ff3deae677d1ab26dc03259f7",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/ac1c7764275d8dde6e3e969f9f46810199d11f8ff3deae677d1ab26dc03259f7.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.276Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_kick_right",
-      "sourcePath": "assets/dance/Dance_kick_right.png",
-      "sourceHash": "734798bbd5a9a40c3217f50dde17d17a50198fa4dbb8f8503789b212bf4976e5",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/734798bbd5a9a40c3217f50dde17d17a50198fa4dbb8f8503789b212bf4976e5.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.284Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_reach_left",
-      "sourcePath": "assets/dance/Dance_reach_left.png",
-      "sourceHash": "c499b8cc99475b5f3f7c23701d382b8c8cb29115151087e94be7b285dfff44e3",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/c499b8cc99475b5f3f7c23701d382b8c8cb29115151087e94be7b285dfff44e3.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.296Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_reach_right",
-      "sourcePath": "assets/dance/Dance_reach_right.png",
-      "sourceHash": "61a1ff390d2974a61fee849a9f8db98ddcd092bbd4e2ba6692e64c707b353b77",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/61a1ff390d2974a61fee849a9f8db98ddcd092bbd4e2ba6692e64c707b353b77.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.308Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_robot_left",
-      "sourcePath": "assets/dance/Dance_robot_left.png",
-      "sourceHash": "b9424e0ca9caeb4a047f2a2306fa3e73b746e1184cfd4b1e7d749c21e33d7731",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/b9424e0ca9caeb4a047f2a2306fa3e73b746e1184cfd4b1e7d749c21e33d7731.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.321Z"
-    },
-    {
-      "assetName": "assets/dance/Dance_robot_right",
-      "sourcePath": "assets/dance/Dance_robot_right.png",
-      "sourceHash": "e96e10be6a50794ac2f4a72a567ad68a81c85fa33be7987c301fa78becc033f4",
-      "format": "auto",
-      "encoderVersion": 33,
-      "width": 128,
-      "height": 128,
-      "blobPath": ".fade-cache/blobs/e96e10be6a50794ac2f4a72a567ad68a81c85fa33be7987c301fa78becc033f4.auto.v33.xnb",
-      "compiledAt": "2026-07-23T22:10:43.331Z"
-    },
-    {
       "assetName": "assets/animatics/Hooded_man",
       "sourcePath": "assets/animatics/Hooded_man.png",
       "sourceHash": "bc420e0729f7d3cd4f6bfbf35584dd516fb0af3b19931d274dc2b7a4d698860a",
@@ -524,6 +381,160 @@
       "height": 2048,
       "blobPath": ".fade-cache/blobs/b05ab70118ac5e809f2ee15c1f7d304b3024eafbab64d0a96e61f72864222cfc.auto.v33.xnb",
       "compiledAt": "2026-07-26T11:08:35.032Z"
+    },
+    {
+      "assetName": "Binary",
+      "sourcePath": "Binary.png",
+      "sourceHash": "1dacd7ce992f73914f0c143fa4501423bbfffd82b648d9a0420a8a2c7dc9318a",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/1dacd7ce992f73914f0c143fa4501423bbfffd82b648d9a0420a8a2c7dc9318a.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.110Z"
+    },
+    {
+      "assetName": "Skull",
+      "sourcePath": "Skull.png",
+      "sourceHash": "dfbcb867b1492776c2e8bde3a0d66d982d18af46bf0f3b4c8296f0ee38cb57e2",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/dfbcb867b1492776c2e8bde3a0d66d982d18af46bf0f3b4c8296f0ee38cb57e2.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.125Z"
+    },
+    {
+      "assetName": "assets/animatics/Face_reveal",
+      "sourcePath": "assets/animatics/Face_reveal.png",
+      "sourceHash": "126403404f531423a057f2eac7d8654e6f4ee70269a730dd5cf5bd8be8442ad8",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/126403404f531423a057f2eac7d8654e6f4ee70269a730dd5cf5bd8be8442ad8.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.168Z"
+    },
+    {
+      "assetName": "assets/animatics/Hooded_man_front",
+      "sourcePath": "assets/animatics/Hooded_man_front.png",
+      "sourceHash": "9bbd6dfb8b6c14beac0a1cb6800eebe80c561b2adf0ab336f4c3f3c4ae44634e",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/9bbd6dfb8b6c14beac0a1cb6800eebe80c561b2adf0ab336f4c3f3c4ae44634e.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.183Z"
+    },
+    {
+      "assetName": "assets/animatics/Lowering_hood",
+      "sourcePath": "assets/animatics/Lowering_hood.png",
+      "sourceHash": "41164a7543f20ae233236dab1a6e5ffa5d35206c29c77210cf0a6e14937a5937",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/41164a7543f20ae233236dab1a6e5ffa5d35206c29c77210cf0a6e14937a5937.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.195Z"
+    },
+    {
+      "assetName": "assets/animatics/Money_snake",
+      "sourcePath": "assets/animatics/Money_snake.png",
+      "sourceHash": "ba1d3082f3a4821fec1979769bd983c4c0270fc10f86d43192566242d32534b9",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/ba1d3082f3a4821fec1979769bd983c4c0270fc10f86d43192566242d32534b9.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.205Z"
+    },
+    {
+      "assetName": "assets/animatics/Monster_snake",
+      "sourcePath": "assets/animatics/Monster_snake.png",
+      "sourceHash": "d6a1fe17d357e6ff62a3db880c0cf84ea80160586baa44fda3b680ea0b27eba7",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/d6a1fe17d357e6ff62a3db880c0cf84ea80160586baa44fda3b680ea0b27eba7.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.233Z"
+    },
+    {
+      "assetName": "assets/animatics/Office",
+      "sourcePath": "assets/animatics/Office.png",
+      "sourceHash": "d64669b4f4d5a3fbcacef6ad3a3cea9df48a07e3b117daef298b9ff577233105",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/d64669b4f4d5a3fbcacef6ad3a3cea9df48a07e3b117daef298b9ff577233105.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.250Z"
+    },
+    {
+      "assetName": "assets/animatics/Running_Boy",
+      "sourcePath": "assets/animatics/Running_Boy.png",
+      "sourceHash": "c2824fc46fdb567efdf5521e019c9f947c87885f90f7d43d08d6d520afc48f30",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/c2824fc46fdb567efdf5521e019c9f947c87885f90f7d43d08d6d520afc48f30.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.261Z"
+    },
+    {
+      "assetName": "assets/animatics/titan_1",
+      "sourcePath": "assets/animatics/titan_1.png",
+      "sourceHash": "415f610740bf0a0dfe2889cbc19df404f3c6b19af91c67f7344a19278553aa20",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/415f610740bf0a0dfe2889cbc19df404f3c6b19af91c67f7344a19278553aa20.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.285Z"
+    },
+    {
+      "assetName": "assets/animatics/titan_2",
+      "sourcePath": "assets/animatics/titan_2.png",
+      "sourceHash": "ccda88de6a6f9dc31c4154a04bf41eb170d56c59b791024d916a3d243c0bce21",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/ccda88de6a6f9dc31c4154a04bf41eb170d56c59b791024d916a3d243c0bce21.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.298Z"
+    },
+    {
+      "assetName": "assets/dance2/Afro1",
+      "sourcePath": "assets/dance2/Afro1.png",
+      "sourceHash": "52db1a58d939bcdc61e32a66a3e115118e2aa8baf4bbff9bc5c12cffc0a9e304",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/52db1a58d939bcdc61e32a66a3e115118e2aa8baf4bbff9bc5c12cffc0a9e304.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.318Z"
+    },
+    {
+      "assetName": "assets/dance2/Afro2",
+      "sourcePath": "assets/dance2/Afro2.png",
+      "sourceHash": "f0dad653f4f7dad172a5815254dd59332e9529452cb84880d8dd8b29fa8d785c",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/f0dad653f4f7dad172a5815254dd59332e9529452cb84880d8dd8b29fa8d785c.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.331Z"
+    },
+    {
+      "assetName": "assets/dance2/Afro3",
+      "sourcePath": "assets/dance2/Afro3.png",
+      "sourceHash": "a42c3cf3d8611e5485ebcbe17d4654b87bbba09e91dddcb4ea9d89cea3fc0676",
+      "format": "auto",
+      "encoderVersion": 33,
+      "width": 512,
+      "height": 512,
+      "blobPath": ".fade-cache/blobs/a42c3cf3d8611e5485ebcbe17d4654b87bbba09e91dddcb4ea9d89cea3fc0676.auto.v33.xnb",
+      "compiledAt": "2026-07-26T12:25:27.342Z"
     }
   ]
 }

@@ -204,14 +204,31 @@ _setupMan:
 
   ` dancing man
   danceManSprite = reserve sprite id(danceManSprite)
-
+  afroSprite = reserve sprite id(afroSprite)
 RETURN
+
 _initMan:
-  sprite danceManSprite, render width()/2, render height()/2, happyDanceTextures(rnd(len(happyDanceTextures)))
+  ` sprite danceManSprite, render width()/2, render height()/2, happyDanceTextures(rnd(len(happyDanceTextures)))
+  sprite danceManSprite, render width()/2, render height()/2, happyDanceTextures(0)
   size sprite x danceManSprite, render width() / 3
   set sprite render target danceManSprite, gameRenderTarget
-  order sprite danceManSprite, -1
+  order sprite danceManSprite, -2
   color sprite danceManSprite, rgb(200, 200, 200)
+
+  sprite afroSprite, sprite x(danceManSprite), sprite y(danceManSprite), afroTextures(0)
+  set sprite render target afroSprite, gameRenderTarget
+  order sprite afroSprite, -1
+  color sprite afroSprite, rgb(203, 255, 214)
+  size sprite afroSprite, 100, 100
+  
+  afterIndex = 0
+  happyIndex = 0
+
+
+RETURN
+
+_applyHappyAfro:
+  position sprite afroSprite, sprite x(danceManSprite) + happyAfros(happyIndex).x, sprite y(danceManSprite) + happyAfros(happyIndex).y
 RETURN
 
 _setupScoreTexts:

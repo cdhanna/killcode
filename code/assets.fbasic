@@ -54,8 +54,22 @@ _loadAssets:
     TEX_NIGHTSCAPE = reserve texture id(TEX_NIGHTSCAPE)
     texture TEX_NIGHTSCAPE, "assets/animatics/Nightscape"
 
+
+    TEX_OFFICE = reserve texture id(TEX_OFFICE)
+    texture TEX_OFFICE, "assets/animatics/Office"
+
     TEX_HOODED_MAN = reserve texture id(TEX_HOODED_MAN)
     texture TEX_HOODED_MAN, "assets/animatics/Hooded_man"
+    TEX_HOODED_MAN_FRONT = reserve texture id(TEX_HOODED_MAN_FRONT)
+    texture TEX_HOODED_MAN_FRONT, "assets/animatics/Hooded_man_front"
+    TEX_HOODED_MAN_LOWERING = reserve texture id(TEX_HOODED_MAN_LOWERING)
+    texture TEX_HOODED_MAN_LOWERING, "assets/animatics/Lowering_hood"
+    TEX_HOODED_MAN_REVEAL = reserve texture id(TEX_HOODED_MAN_REVEAL)
+    texture TEX_HOODED_MAN_REVEAL, "assets/animatics/Face_reveal"
+
+    TEX_RUNNING_BOY = reserve texture id(TEX_RUNNING_BOY)
+    texture TEX_RUNNING_BOY, "assets/animatics/Running_boy"
+
 
     TEX_MONSTER_1 = reserve texture id(TEX_MONSTER_1)
     texture TEX_MONSTER_1, "assets/animatics/monster_1"
@@ -67,6 +81,12 @@ _loadAssets:
     texture TEX_MONSTER_4, "assets/animatics/Monster_4"
     TEX_MONSTER_5 = reserve texture id(TEX_MONSTER_5)
     texture TEX_MONSTER_5, "assets/animatics/Monster_5"
+
+    TEX_MONSTER_SNAKE = reserve texture id(TEX_MONSTER_SNAKE)
+    texture TEX_MONSTER_SNAKE, "assets/animatics/Monster_snake"
+    TEX_MONEY_SNAKE = reserve texture id(TEX_MONEY_SNAKE)
+    texture TEX_MONEY_SNAKE, "assets/animatics/Money_snake"
+
 
     TEX_ARROW = reserve texture id(TEX_ARROW)
     texture TEX_ARROW, "assets/animatics/Arrow"
@@ -85,5 +105,13 @@ _loadAssets:
 
     TEX_SKULL = reserve texture id(TEX_SKULL)
     texture TEX_SKULL, "assets/animatics/Skull"
+
+
+    TEX_TITAN1 = reserve texture id(TEX_TITAN1)
+    texture TEX_TITAN1, "assets/animatics/titan_1"
+
+    TEX_TITAN2 = reserve texture id(TEX_TITAN2)
+    texture TEX_TITAN2, "assets/animatics/titan_2"
+
 
 RETURN
