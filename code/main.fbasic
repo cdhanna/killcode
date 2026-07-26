@@ -39,7 +39,11 @@ GOSUB _doCountDown
 songStartTime = timer()
 fallSpeed# = (noteDelta / bps) / 1000
 pauseOffset = 0
+crtTime# = 0
 do
+
+  crtTime# += .1
+  set effect param float crtEffect, "Time", crtTime#
 
   if new key down(27) `ESCAPE KEY
     
@@ -97,7 +101,8 @@ do
   for n = 0 to len(lanes) - 1
     lane = lanes(n)
 
-    if any tweens running(lane.textId)
+    `if any tweens running(lane.textId)
+    if tweenVal(lane.posTween) > 0
       set text position lane.textId, text x(lane.textId), tweenVal(lane.posTween)
     endif
 

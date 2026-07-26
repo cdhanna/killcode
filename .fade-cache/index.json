@@ -317,6 +317,20 @@
       "height": 512,
       "blobPath": ".fade-cache/blobs/7a04743d6eb2411f75a16f3436476b59e9daae011ec4aa02d6c79c9b28d9bad8.auto.v33.xnb",
       "compiledAt": "2026-07-26T01:03:58.490Z"
+    },
+    {
+      "assetName": "crt",
+      "sourcePath": "crt.fx",
+      "sourceHash": "d049560331820f9089cbea62891ed8a60cf14784763508960b995460199ba37c",
+      "format": "shader-mgfx-v10",
+      "encoderVersion": 33,
+      "width": 0,
+      "height": 0,
+      "blobPath": ".fade-cache/blobs/d049560331820f9089cbea62891ed8a60cf14784763508960b995460199ba37c.shader-mgfx-v10.v33.xnb",
+      "metadata": {
+        "techniqueCount": 1
+      },
+      "compiledAt": "2026-07-26T03:08:55.806Z"
     }
   ]
 }

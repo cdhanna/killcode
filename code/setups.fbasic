@@ -1,6 +1,22 @@
 
 _setupLanes:
 
+  gameRenderTarget = reserve render target id(gameRenderTarget)
+  render target gameRenderTarget
+  set render target background color gameRenderTarget, rgb(32, 32, 32)
+  set render target clear flags gameRenderTarget, 1
+
+  crtEffect = 2`reserve effect id(crtEffect)
+  effect crtEffect, "crt"
+
+  gameSprite = reserve sprite id(gameSprite)
+  sprite gameSprite, 100, 100, render target texture(gameRenderTarget)
+  set sprite offset gameSprite, 0, 0
+  order sprite gameSprite, -10
+  size sprite gameSprite, render width() - 200, render height() - 200
+  set sprite effect gameSprite, crtEffect
+
+
   dim laneKeys$(4)
   laneKeys$(0) = "F"
   laneKeys$(1) = "G"
@@ -27,14 +43,18 @@ _setupLanes:
     text lanes(n).textId, x, laneTextY, 1, laneKeys$(n)
     enable text drop shadow lanes(n).textId, -4, -8, rgb(0,0,0)
     size text x lanes(n).textId, 50
+    set text render target lanes(n).textId, gameRenderTarget
 
     sprite lanes(n).leftSpriteId, x-140, 10 + render height()/2, 0
     size sprite lanes(n).leftSpriteId, 5, render height()-200
     color sprite lanes(n).leftspriteid, lineColor
+    set sprite render target lanes(n).leftspriteid, gameRenderTarget
+
 
     sprite lanes(n).rightSpriteId, x+140, 10 + render height()/2, 0
     size sprite lanes(n).rightSpriteId, 5, render height()-200
     color sprite lanes(n).rightSpriteId, lineColor
+    set sprite render target lanes(n).rightSpriteId, gameRenderTarget
 
     ` create basic tween lane.posTween, laneTextY, laneTextY - 30, 300, 0
     ` set tween type lane.posTween, 1
@@ -50,16 +70,21 @@ _setupLines:
   sprite sid, render width()/2, targetY - targetHeight/2, 0
   size sprite sid, render width(), 4
   color sprite sid, lineColor
+  set sprite render target sid, gameRenderTarget
+
+  
   free sprite id(sid)
   sprite sid, render width()/2, targetY + targetHeight/2, 0
   size sprite sid, render width(), 4
   color sprite sid, lineColor
+  set sprite render target sid, gameRenderTarget
 
   ` create top bar
   free sprite id(sid)
   sprite sid, render width()/2, 100, 0
   size sprite sid, render width(), 4
   color sprite sid, lineColor
+  set sprite render target sid, gameRenderTarget
 
 RETURN
 
@@ -87,6 +112,8 @@ dim snips(32) as snip
     ` songTimeCounter += 1 + rnd(3)
 
     text snips(n).textId, getLaneX(snips(n).laneIndex), snips(n).y, 1, snippets$(snips(n).index)
+    set text render target snips(n).textId, gameRenderTarget
+    
     resetSnip(n)
   next
   print "loaded snips"
@@ -117,6 +144,7 @@ _setupMan:
   danceManSprite = reserve sprite id(danceManSprite)
   sprite danceManSprite, render width()/2, render height()/2, happyDanceTextures(rnd(len(happyDanceTextures)))
   size sprite x danceManSprite, render width() / 3
+  set sprite render target danceManSprite, gameRenderTarget
   order sprite danceManSprite, -1
 
 RETURN
